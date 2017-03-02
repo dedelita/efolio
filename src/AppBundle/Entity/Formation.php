@@ -31,6 +31,13 @@ class Formation
      */
     private $institute;
 
+    public function __construct($name, $years, $institute)
+    {
+        $this->name = $name;
+        $this->years = $years;
+        $this->institute  = $institute;
+    }
+
 
     /**
      * Set name

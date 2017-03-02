@@ -10,4 +10,8 @@ namespace AppBundle\Entity;
  */
 class FormationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getFormations() {
+        $query = $this->_em->createQuery('SELECT f.name, f.years, f.institute FROM AppBundle:Formation f');
+        return $query->getResult();
+    }
 }

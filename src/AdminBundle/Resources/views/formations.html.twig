@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+
+    {% block top_title %}Add a formation{% endblock %}
+    {% block content %}
+        <form action="{{path('add_formation')}}" method="POST">
+            <label>Years</label>
+            <input type="text" name="years" placeholder="XXXX - XXXX"/>
+
+            <br>
+            <br>
+
+            <label>Formation</label>
+            <input type="text" name="formation"/>
+
+            <br>
+            <br>
+
+            <label>Institute</label>
+            <input type="text" name="institute"/>
+
+            <br>
+            <br>
+
+            <button type="submit" value="Add"></button>
+            <button type="reset" value="Reset"></button>
+        </form>
+{% endblock %}

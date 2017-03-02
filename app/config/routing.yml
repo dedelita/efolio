@@ -1,3 +1,11 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+formations:
+    defaults: { _controller: AppBundle:Formation:getFormations }
+    path: /formations
+
+new_formation:
+    defaults: { _controller: AdminBundle:Formation:addFormation }
+    path: /admin/formation
