@@ -17,26 +17,6 @@ class User extends BaseUser {
      */
     protected $id;
     
-    /**
-     * @ORM\Column(name="last_name", type="text")
-     */ 
-    private $last_name;
-    
-    /**
-     * @ORM\Column(name="firt_name", type="text")
-     */ 
-    private $first_name;
-    
-    /**
-     * @ORM\Column(name="email", type="text")
-     */ 
-    private $email;
-    
-    /**
-     * @ORM\Column(name="email", type="text")
-     */ 
-    private $email;
-    
     public function __construct()
     {
         parent::__construct();
