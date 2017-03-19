@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My e-portfolio{% endblock %}
+
+{% block top_title %}Delphine Martinez Parra{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="sidebar-nav">
+                <div class="navbar-default navbar-fixed-side" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#formation">Formations</a></li>
+                            <li><a href="#experience">Expériences</a></li>
+                            <li><a href="#competence">Compétences</a></li>
+                            <li><a href="#projet">Projets réalisés</a></li>
+                            <li><a href="#recommandation">Recommandations</a></li>
+                            <li><a href="#publication">Publications</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="panel" id="formation">
+                <h1>Formations</h1>
+                <div class="panel-body">
+                    {% if formations == null %}
+                        <p>There's no formations added yet.</p>
+                    {% else %}
+                        <table>
+                            <th>Period</th>
+                            <th>Formation</th>
+                            {% for formation in formations %}
+                                <tr>
+                                    <td>{{ formation.getYears() }}</td>
+                                    <td>{{ formation.getName() }} at {{ formation.getInstitute() }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div class="panel" id="experience">
+                <h1>Expériences</h1>
+                <div class="panel-body">
+                    {% if experiences == null %}
+                        <p>There's no experiences added yet.</p>
+                    {% else %}
+                        <table>
+                            <th>Period</th>
+                            <th>experience</th>
+                            {% for experience in experiences %}
+                                <tr>
+                                    <td>{{ experience.getYears() }}</td>
+                                    <td>{{ experience.getExperience() }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="panel" id="competence">
+                <h1>Compétences</h1>
+                <div class="panel-body">
+                    {% if competences == null %}
+                        <p>There's no competences added yet.</p>
+                    {% else %}
+                        <table>
+                            <th>Competence</th>
+                            {% for competence in competences %}
+                                <tr>
+                                    <td>{{ competence.getCompetence() }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="panel" id="projet">
+                <h1>Projets Réalisés</h1>
+                <div class="panel-body">Panel Content</div>
+            </div>
+
+            <div class="panel" id="recommandation">
+                <h1>Recommandations</h1>
+                <div class="panel-body">Panel Content</div>
+            </div>
+
+            <div class="panel" id="publication">
+                <h1>Publications</h1>
+                <div class="panel-body">Panel Content</div>
+            </div>
+
+            <div class="panel" id="contact">
+                <h1>Contact</h1>
+                <div class="panel-body">Panel Content</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

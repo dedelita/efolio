@@ -1,11 +1,19 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-
+    
 formations:
-    defaults: { _controller: AppBundle:Formation:getFormations }
-    path: /formations
+    defaults: { _controller: AppBundle:Folio:getEfolio }
+    path: /efolio
 
 new_formation:
-    defaults: { _controller: AdminBundle:Formation:addFormation }
-    path: /admin/formation
+    defaults: { _controller: AdminBundle:Folio:index }
+    path: /admin/efolio
+
+add_formation:
+    defaults: { _controller: Admin:Folio:addFormation }
+    path: /admin/efolio
+
+add_competence:
+    defaults: { _controller: Admin:Folio:addCompetence }
+    path: /admin/efolio

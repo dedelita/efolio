@@ -1,15 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: hello
+ * Date: 13/03/2017
+ * Time: 21:09
+ */
 
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
- * @ORM\Table(name="formation")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\FormationRepository")
+ * @ORM\Table(name="experience")
  *
  */
-class Formation
+class Experience
 {
     /**
      * @ORM\Id
@@ -19,56 +25,59 @@ class Formation
     protected $id;
 
     /**
-     * @ORM\Column(name="name", type="text")
+     * @ORM\Column(name="experience", type="text")
      */
-    private $name;
-
+    private $experience;
     /**
      * @ORM\Column(name="years", type="text")
      */
     private $years;
 
     /**
-     * @ORM\Column(name="institute", type="text")
-     */
-    private $institute;
-
-    /**
      * @ORM\Column(name="id_user", type="text")
      */
     private $id_user;
 
-    public function __construct($name, $years, $institute, $id_user)
+    
+    public function __construct($experience, $years, $id_user)
     {
-        $this->name = $name;
+        $this->experience = $experience;
         $this->years = $years;
-        $this->institute  = $institute;
-        $this->id_user = $id_user;
+        $this->id_user  = $id_user;
     }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
-     * Set name
+     * Set experience
      *
-     * @param string $name
+     * @param string $experience
      *
-     * @return Formation
+     * @return Experience
      */
-    public function setName($name)
+    public function setExperience($experience)
     {
-        $this->name = $name;
+        $this->experience = $experience;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get experience
      *
      * @return string
      */
-    public function getName()
+    public function getExperience()
     {
-        return $this->name;
+        return $this->experience;
     }
 
     /**
@@ -76,7 +85,7 @@ class Formation
      *
      * @param string $years
      *
-     * @return Formation
+     * @return Experience
      */
     public function setYears($years)
     {
@@ -96,45 +105,11 @@ class Formation
     }
 
     /**
-     * Set institute
-     *
-     * @param string $institute
-     *
-     * @return Formation
-     */
-    public function setInstitute($institute)
-    {
-        $this->institute = $institute;
-
-        return $this;
-    }
-
-    /**
-     * Get institute
-     *
-     * @return string
-     */
-    public function getInstitute()
-    {
-        return $this->institute;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Set idUser
      *
      * @param string $idUser
      *
-     * @return Formation
+     * @return Experience
      */
     public function setIdUser($idUser)
     {
