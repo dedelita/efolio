@@ -34,7 +34,7 @@ class Experience
     private $years;
 
     /**
-     * @ORM\Column(name="id_user", type="text")
+     * @ORM\Column(name="id_user", type="integer")
      */
     private $id_user;
 

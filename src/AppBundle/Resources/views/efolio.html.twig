@@ -35,9 +35,9 @@
         <div class="col-sm-10">
             <div class="panel" id="formation">
                 <h1>Formations</h1>
-                <div class="panel-body">
+                <div class="panel-content">
                     {% if formations == null %}
-                        <p>There's no formations added yet.</p>
+                        <p>Aucune formation n'a été ajoutée.</p>
                     {% else %}
                         <table>
                             <th>Period</th>
@@ -56,13 +56,13 @@
 
             <div class="panel" id="experience">
                 <h1>Expériences</h1>
-                <div class="panel-body">
+                <div class="panel-content">
                     {% if experiences == null %}
-                        <p>There's no experiences added yet.</p>
+                        <p>Aucune expérience n'a été ajoutée.</p>
                     {% else %}
                         <table>
-                            <th>Period</th>
-                            <th>experience</th>
+                            <th>Période</th>
+                            <th>Experience</th>
                             {% for experience in experiences %}
                                 <tr>
                                     <td>{{ experience.getYears() }}</td>
@@ -76,40 +76,59 @@
 
             <div class="panel" id="competence">
                 <h1>Compétences</h1>
-                <div class="panel-body">
+                <div class="panel-content">
                     {% if competences == null %}
-                        <p>There's no competences added yet.</p>
+                        <p>Aucune compétence n'a été ajoutée.</p>
                     {% else %}
-                        <table>
-                            <th>Competence</th>
-                            {% for competence in competences %}
-                                <tr>
-                                    <td>{{ competence.getCompetence() }}</td>
-                                </tr>
-                            {% endfor %}
-                        </table>
+                        {% for compentence in competences %}
+                            <p>{{ competence.getCompetence() }}</p>
+                        {% endfor %}
                     {% endif %}
                 </div>
             </div>
 
             <div class="panel" id="projet">
                 <h1>Projets Réalisés</h1>
-                <div class="panel-body">Panel Content</div>
+                <div class="panel-content">
+                    {% if projets == null %}
+                        <p>Aucun projet n'a été ajouté.</p>
+                    {% else %}
+                        {% for projet in projets %}
+                            <p>{{ projet.getProjet() }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
 
             <div class="panel" id="recommandation">
                 <h1>Recommandations</h1>
-                <div class="panel-body">Panel Content</div>
+                <div class="panel-content">
+                    {% if recommandations == null %}
+                        <p>Aucune recommandation n'a été ajoutée.</p>
+                    {% else %}
+                        {% for recommandation in recommandations %}
+                            <p>{{ recommandation.getRecommandation() }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
 
             <div class="panel" id="publication">
                 <h1>Publications</h1>
-                <div class="panel-body">Panel Content</div>
+                <div class="panel-content">
+                    {% if publications == null %}
+                        <p>Aucune publication n'a été ajoutée.</p>
+                    {% else %}
+                        {% for publication in publications %}
+                            <p>{{ publication.getPublication() }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
 
             <div class="panel" id="contact">
                 <h1>Contact</h1>
-                <div class="panel-body">Panel Content</div>
+                <div class="panel-content">MAIL</div>
             </div>
         </div>
     </div>

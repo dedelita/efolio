@@ -24,14 +24,14 @@ class User
     protected $id;
 
     /**
-     * @ORM\Column(name="lastname", type="text")
+     * @ORM\Column(name="nom", type="text")
      */
-    private $lastname;
+    private $nom;
 
     /**
-     * @ORM\Column(name="firstname", type="text")
+     * @ORM\Column(name="prenom", type="text")
      */
-    private $firstname;
+    private $prenom;
 
     /**
      * @ORM\Column(name="email", type="text")
@@ -44,7 +44,7 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(name="age", type="number")
+     * @ORM\Column(name="age", type="integer")
      */
     private $age;
 
@@ -60,51 +60,51 @@ class User
     }
 
     /**
-     * Set lastname
+     * Set nom
      *
-     * @param string $lastname
+     * @param string $nom
      *
      * @return User
      */
-    public function setLastname($lastname)
+    public function setNom($nom)
     {
-        $this->lastname = $lastname;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get lastname
+     * Get nom
      *
      * @return string
      */
-    public function getLastname()
+    public function getNom()
     {
-        return $this->lastname;
+        return $this->nom;
     }
 
     /**
-     * Set firstname
+     * Set prenom
      *
-     * @param string $firstname
+     * @param string $prenom
      *
      * @return User
      */
-    public function setFirstname($firstname)
+    public function setPrenom($prenom)
     {
-        $this->firstname = $firstname;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get firstname
+     * Get prenom
      *
      * @return string
      */
-    public function getFirstname()
+    public function getPrenom()
     {
-        return $this->firstname;
+        return $this->prenom;
     }
 
     /**
@@ -178,4 +178,5 @@ class User
     {
         return $this->password;
     }
+
 }
