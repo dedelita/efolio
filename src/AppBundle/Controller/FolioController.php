@@ -31,14 +31,41 @@ class FolioController extends Controller
         return $competences;
     }
 
+    public function getProjets() {
+        $projetRepo = $this->getDoctrine()->getRepository('AppBundle:Projet');
+        $projets = $projetRepo->findAll();
+
+        return $projets;
+    }
+
+    public function getRecommandations() {
+        $recommandationRepo = $this->getDoctrine()->getRepository('AppBundle:Recommandation');
+        $recommandations = $recommandationRepo->findAll();
+
+        return $recommandations;
+    }
+
+    public function getPublications() {
+        $publicationRepo = $this->getDoctrine()->getRepository('AppBundle:Publication');
+        $publications = $publicationRepo->findAll();
+
+        return $publications;
+    }
+
     public function getEfolioAction() {
         $formations = $this->getFormations();
         $experiences = $this->getExperiences();
         $competences = $this->getCompetences();
+        $projets = $this->getProjets();
+        $recommandations = $this->getRecommandations();
+        $publications = $this->getPublications();
 
         return $this->render('AppBundle::efolio.html.twig',
             array('formations' => $formations,
                 'experiences' => $experiences,
-                'competences' => $competences));
+                'competences' => $competences,
+                'publications' => $publications,
+                'projets' => $projets,
+                'recommandations' => $recommandations));
     }
 }
