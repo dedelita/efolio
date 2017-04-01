@@ -39,6 +39,18 @@ class Projet
      */
     private $description;
 
+    /**
+     * @ORM\Column(name="annee", type="integer")
+     */
+    private $annee;
+
+    public function __construct($nom, $description, $annee, $id_user)
+    {
+        $this->nom = $nom;
+        $this->description = $description;
+        $this->annee = $annee;
+        $this->id_user = $id_user;
+    }
 
     /**
      * Get id
@@ -53,11 +65,11 @@ class Projet
     /**
      * Set idUser
      *
-     * @param \number $idUser
+     * @param integer $idUser
      *
      * @return Projet
      */
-    public function setIdUser(\number $idUser)
+    public function setIdUser($idUser)
     {
         $this->id_user = $idUser;
 
@@ -67,7 +79,7 @@ class Projet
     /**
      * Get idUser
      *
-     * @return \number
+     * @return integer
      */
     public function getIdUser()
     {

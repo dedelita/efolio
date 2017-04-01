@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"/>
-        {% endblock %}
+    {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
 
-    <body class="container">
-        {% block body %}
-            <header id="top">
-                <h1>{% block top_title %}{% endblock %}</h1>
-            </header>
-            <div id="content">
-               {% block content %}{% endblock %}
-            </div>
-        {% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<body>
+{% block body %}
+    <header id="top">
+        <h1>{% block top_title %}{% endblock %}</h1>
+    </header>
+
+    <div id="box">
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <footer id="bottom">2017</footer>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+</body>
 </html>

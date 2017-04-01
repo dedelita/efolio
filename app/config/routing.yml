@@ -2,18 +2,62 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
     
-formations:
+index:
     defaults: { _controller: AppBundle:Folio:getEfolio }
     path: /efolio
 
-new_formation:
+efolio:
+    defaults: { _controller: AppBundle:Folio:getEfolio }
+    path: /
+
+admin_index:
     defaults: { _controller: AdminBundle:Folio:index }
     path: /admin/efolio
 
+admin_connexion:
+    defaults: { _controller: AdminBundle:User:connexion }
+    path: /admin/connexion
+
+admin_deconnexion:
+    defaults: { _controller: AdminBundle:User:deconnexion }
+    path: /admin/deconnexion
+
+admin_formations:
+    defaults: { _controller: AdminBundle:Formations:index }
+    path: /admin/formations/
+
+set_formation:
+    defaults: { _controller:AdminBundle:Formations:setFormation }
+    path: /admin/formations/modified
+
 add_formation:
-    defaults: { _controller: Admin:Folio:addFormation }
-    path: /admin/efolio
+    defaults: { _controller: AdminBundle:Formations:addFormation }
+    path: /admin/formations/added
+
+admin_competences:
+    defaults: { _controller: AdminBundle:Competences:index }
+    path: /admin/competences/
 
 add_competence:
-    defaults: { _controller: Admin:Folio:addCompetence }
+    defaults: { _controller: AdminBundle:Competences:addCompetence }
+    path: /admin/competences/added
+
+set_competence:
+    defaults: { _controller: AdminBundle:Competences:setCompetence }
+    path: /admin/competences/modified
+
+add_projet:
+    defaults: { _controller: AdminBundle:Folio:addProjet }
+    path: /admin/efolio
+
+add_publication:
+    defaults: { _controller: AdminBundle:Folio:addPublication }
+    path: /admin/efolio
+
+add_recommandation:
+    defaults: { _controller: AdminBundle:Folio:addRecommandation }
+    path: /admin/efolio
+
+add_experience:
+    defaults: { _controller: AdminBundle:Folio:addExperience }
     path: /admin/efolio

@@ -39,16 +39,15 @@
                     {% if formations == null %}
                         <p>Aucune formation n'a été ajoutée.</p>
                     {% else %}
-                        <table>
-                            <th>Period</th>
-                            <th>Formation</th>
-                            {% for formation in formations %}
-                                <tr>
-                                    <td>{{ formation.getYears() }}</td>
-                                    <td>{{ formation.getName() }} at {{ formation.getInstitute() }}</td>
-                                </tr>
-                            {% endfor %}
-                        </table>
+                        {% for formation in formations %}
+                            {{ formation.getAnnees() }} - {{ formation.getFormation() }} - {{ formation.getEtablissement() }} ({{ formation.getVille() }})
+
+                            {% if loop.last == false %}
+                                <br>
+                                <hr>
+                                <br>
+                            {% endif %}
+                        {% endfor %}
                     {% endif %}
                 </div>
             </div>
@@ -65,9 +64,15 @@
                             <th>Experience</th>
                             {% for experience in experiences %}
                                 <tr>
-                                    <td>{{ experience.getYears() }}</td>
+                                    <td>{{ experience.getAnnees() }}</td>
                                     <td>{{ experience.getExperience() }}</td>
                                 </tr>
+
+                                {% if loop.last == false %}
+                                    <br>
+                                    <hr>
+                                    <br>
+                                {% endif %}
                             {% endfor %}
                         </table>
                     {% endif %}
@@ -80,8 +85,14 @@
                     {% if competences == null %}
                         <p>Aucune compétence n'a été ajoutée.</p>
                     {% else %}
-                        {% for compentence in competences %}
-                            <p>{{ competence.getCompetence() }}</p>
+                        {% for competence in competences %}
+                            <p>{{ competence.getCompetence() }} ({{ competence.getDetails() }})</p>
+
+                            {% if loop.last == false %}
+                                <br>
+                                <hr>
+                                <br>
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -94,7 +105,13 @@
                         <p>Aucun projet n'a été ajouté.</p>
                     {% else %}
                         {% for projet in projets %}
-                            <p>{{ projet.getProjet() }}</p>
+                            <p>{{ projet.getNom() }} - {{ projet.getDescription() }}</p>
+
+                            {% if loop.last == false %}
+                                <br>
+                                <hr>
+                                <br>
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -107,7 +124,13 @@
                         <p>Aucune recommandation n'a été ajoutée.</p>
                     {% else %}
                         {% for recommandation in recommandations %}
-                            <p>{{ recommandation.getRecommandation() }}</p>
+                            <p>TO DO</p>
+
+                            {% if loop.last == false %}
+                                <br>
+                                <hr>
+                                <br>
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -120,7 +143,14 @@
                         <p>Aucune publication n'a été ajoutée.</p>
                     {% else %}
                         {% for publication in publications %}
-                            <p>{{ publication.getPublication() }}</p>
+                            <p>{{ publication.getTitre() }}</p>
+                            <p>{{ publication.getContenu() }}</p>
+
+                            {% if loop.last == false %}
+                                <br>
+                                <hr>
+                                <br>
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
                 </div>

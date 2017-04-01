@@ -2,6 +2,8 @@
 
 namespace AdminBundle\Controller;
 
+use AppBundle\Entity\Publication;
+use AppBundle\Entity\Recommandation;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,31 +17,16 @@ class FolioController extends Controller
     public function indexAction() {
         return $this->render('AdminBundle::efolio.html.twig');
     }
-    public function addFormationAction(Request $request) {
-        $name = $request->get('name');
-        $years = $request->get('years');
-        $institute = $request->get('institute');
-        $id_user = 1;
-
-
-        $em = $this->getDoctrine()->getManager();
-
-        $formation = new Formation($name, $years, $institute, $id_user);
-        $em->persist($formation);
-        $em->flush();
-
-        return new Response(true);
-    }
-
+    
     public function addExperienceAction(Request $request) {
         $exp = $request->get('experience');
-        $years = $request->get('years');
+        $annees = $request->get('annees');
         $id_user = 1;
 
 
         $em = $this->getDoctrine()->getManager();
 
-        $experience = new Experience($exp, $years, $id_user);
+        $experience = new Experience($exp, $annees, $id_user);
         $em->persist($experience);
         $em->flush();
 
@@ -47,15 +34,61 @@ class FolioController extends Controller
     }
 
     public function addCompetenceAction(Request $request) {
-        $name = $request->get('name');
-        $years = $request->get('years');
-        $institute = $request->get('institute');
+        $comp = $request->get('competence');
+        $id_user = 1;
 
 
         $em = $this->getDoctrine()->getManager();
 
-        $formation = new Competence($name, $years, $institute);
-        $em->persist($formation);
+        $competence = new Competence($comp, $id_user);
+        $em->persist($competence);
+        $em->flush();
+
+        return new Response(true);
+    }
+
+    public function addProjetAction(Request $request) {
+        $nom = $request->get('nom');
+        $description = $request->get('description');
+        $annee = $request->get('annee');
+        $id_user = 1;
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $projet = new Projet($nom, $description, $annee, $id_user);
+        $em->persist($projet);
+        $em->flush();
+
+        return new Response(true);
+    }
+
+    public function addPublicationAction(Request $request) {
+        $titre = $request->get('titre');
+        $contenu = $request->get('contenu');
+        $id_user = 1;
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $publication = new Publication($titre, $contenu, $id_user);
+        $em->persist($publication);
+        $em->flush();
+
+        return new Response(true);
+    }
+
+    public function addRecommandationAction(Request $request) {
+        $personne = $request->get('personne');
+        $entreprise = $request->get('entreprise');
+        $contenu = $request->get('contenu');
+        $id_user = 1;
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $recommandation = new Recommandation($personne, $entreprise, $contenu, $id_user);
+        $em->persist($recommandation);
         $em->flush();
 
         return new Response(true);

@@ -44,6 +44,14 @@ class Recommandation
      */
     private $contenu;
 
+    public function __construct($personne, $entreprise, $contenu, $id_user)
+    {
+        $this->personne = $personne;
+        $this->entreprise = $entreprise;
+        $this->contenu = $contenu;
+        $this->id_user = $id_user;
+    }
+
     /**
      * Get id
      *

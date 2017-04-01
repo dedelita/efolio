@@ -10,48 +10,85 @@ use AppBundle\Entity\Formation;
 
 class FolioController extends Controller
 {
-    public function getFormations() {
+    //Formations
+    public function getFormationsAction() {
         $formationRepo = $this->getDoctrine()->getRepository('AppBundle:Formation');
         $formations = $formationRepo->findAll();
 
-        return $formations;
+        return new Response(serialize($formations));
     }
 
-    public function getExperiences() {
+    private function getFormations() {
+        return unserialize($this->getFormationsAction()->getContent());
+    }
+
+
+    //Experiences
+    public function getExperiencesAction() {
         $experienceRepo = $this->getDoctrine()->getRepository('AppBundle:Experience');
         $experiences = $experienceRepo->findAll();
 
-        return $experiences;
+        return new Response(serialize($experiences));
     }
 
-    public function getCompetences() {
+    private function getExperiences() {
+        return unserialize($this->getExperiencesAction()->getContent());
+    }
+
+
+    //Competences
+    public function getCompetencesAction() {
         $competenceRepo = $this->getDoctrine()->getRepository('AppBundle:Competence');
         $competences = $competenceRepo->findAll();
 
-        return $competences;
+        return new Response(serialize($competences));
     }
 
-    public function getProjets() {
+    private function getCompetences() {
+        return unserialize($this->getCompetencesAction()->getContent());
+    }
+
+
+    //Projets
+    public function getProjetsAction() {
         $projetRepo = $this->getDoctrine()->getRepository('AppBundle:Projet');
         $projets = $projetRepo->findAll();
 
-        return $projets;
+        return new Response(serialize($projets));
     }
 
-    public function getRecommandations() {
+    private function getProjets() {
+        return unserialize($this->getProjetsAction()->getContent());
+    }
+
+
+    //Recommandation
+    public function getRecommandationsAction() {
         $recommandationRepo = $this->getDoctrine()->getRepository('AppBundle:Recommandation');
         $recommandations = $recommandationRepo->findAll();
 
-        return $recommandations;
+        return new Response(serialize($recommandations));
     }
 
-    public function getPublications() {
+    private function getRecommandations() {
+        return unserialize($this->getRecommandationsAction()->getContent());
+    }
+
+
+    //Publications
+    public function getPublicationsAction() {
         $publicationRepo = $this->getDoctrine()->getRepository('AppBundle:Publication');
         $publications = $publicationRepo->findAll();
 
-        return $publications;
+        return new Response(serialize($publications));
     }
 
+    private function getPublications() {
+        return unserialize($this->getPublicationsAction()->getContent());
+    }
+
+
+    //EFolio
     public function getEfolioAction() {
         $formations = $this->getFormations();
         $experiences = $this->getExperiences();

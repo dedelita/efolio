@@ -22,7 +22,7 @@ class Competence
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(name="competence", type="text")
@@ -30,15 +30,26 @@ class Competence
     private $competence;
 
     /**
+     * @ORM\Column(name="details", type="text")
+     */
+    private $details;
+
+    /**
      * @ORM\Column(name="id_user", type="integer")
      */
     private $id_user;
 
-
-    public function __construct($competence, $id_user)
+    /**
+     * Competence constructor.
+     * @param $competence
+     * @param $details
+     * @param $id_user
+     */
+    public function __construct($competence, $details, $id_user)
     {
         $this->competence = $competence;
-        $this->id_user  = $id_user;
+        $this->details = $details;
+        $this->id_user = $id_user;
     }
 
     /**
@@ -76,9 +87,33 @@ class Competence
     }
 
     /**
+     * Set details
+     *
+     * @param string $details
+     *
+     * @return Competence
+     */
+    public function setDetails($details)
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    /**
+     * Get details
+     *
+     * @return string
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    /**
      * Set idUser
      *
-     * @param string $idUser
+     * @param integer $idUser
      *
      * @return Competence
      */
@@ -92,7 +127,7 @@ class Competence
     /**
      * Get idUser
      *
-     * @return string
+     * @return integer
      */
     public function getIdUser()
     {

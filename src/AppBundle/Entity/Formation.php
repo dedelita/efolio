@@ -16,107 +16,48 @@ class Formation
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @ORM\Column(name="name", type="text")
+     * @ORM\Column(name="formation", type="text")
      */
-    private $name;
+    private $formation;
 
     /**
-     * @ORM\Column(name="years", type="text")
+     * @ORM\Column(name="annees", type="text")
      */
-    private $years;
+    private $annees;
 
     /**
-     * @ORM\Column(name="institute", type="text")
+     * @ORM\Column(name="etablissement", type="text")
      */
-    private $institute;
+    private $etablissement;
+
+    /**
+     * @ORM\Column(name="ville", type="text")
+     */
+    private $ville;
 
     /**
      * @ORM\Column(name="id_user", type="integer")
      */
     private $id_user;
 
-    public function __construct($name, $years, $institute, $id_user)
+    /**
+     * Formation constructor.
+     * @param $formation
+     * @param $annees
+     * @param $etablissement
+     * @param $ville
+     * @param $id_user
+     */
+    public function __construct($formation, $annees, $etablissement, $ville, $id_user)
     {
-        $this->name = $name;
-        $this->years = $years;
-        $this->institute  = $institute;
+        $this->formation = $formation;
+        $this->annees = $annees;
+        $this->etablissement = $etablissement;
+        $this->ville = $ville;
         $this->id_user = $id_user;
-    }
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Formation
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set years
-     *
-     * @param string $years
-     *
-     * @return Formation
-     */
-    public function setYears($years)
-    {
-        $this->years = $years;
-
-        return $this;
-    }
-
-    /**
-     * Get years
-     *
-     * @return string
-     */
-    public function getYears()
-    {
-        return $this->years;
-    }
-
-    /**
-     * Set institute
-     *
-     * @param string $institute
-     *
-     * @return Formation
-     */
-    public function setInstitute($institute)
-    {
-        $this->institute = $institute;
-
-        return $this;
-    }
-
-    /**
-     * Get institute
-     *
-     * @return string
-     */
-    public function getInstitute()
-    {
-        return $this->institute;
     }
 
     /**
@@ -130,9 +71,105 @@ class Formation
     }
 
     /**
+     * Set formation
+     *
+     * @param string $formation
+     *
+     * @return Formation
+     */
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
+    /**
+     * Get formation
+     *
+     * @return string
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+
+    /**
+     * Set annees
+     *
+     * @param string $annees
+     *
+     * @return Formation
+     */
+    public function setAnnees($annees)
+    {
+        $this->annees = $annees;
+
+        return $this;
+    }
+
+    /**
+     * Get annees
+     *
+     * @return string
+     */
+    public function getAnnees()
+    {
+        return $this->annees;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param string $etablissement
+     *
+     * @return Formation
+     */
+    public function setEtablissement($etablissement)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return string
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Formation
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
      * Set idUser
      *
-     * @param string $idUser
+     * @param integer $idUser
      *
      * @return Formation
      */
@@ -146,7 +183,7 @@ class Formation
     /**
      * Get idUser
      *
-     * @return string
+     * @return integer
      */
     public function getIdUser()
     {

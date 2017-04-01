@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EFolio - Connexion{% endblock %}
+
+{% block top_title %}EFolio - Connexion{% endblock %}
+
+{% block content %}
+    <p>{{ erreur }}</p>
+
+    <form action="{{ path("admin_connexion") }}" method="post">
+        Email : <input name="email" type="email">
+        <br>
+        <br>
+        Mot de passe : <input name="password" type="password">
+        <br>
+        <br>
+        <input type="submit" value="Connexion">
+    </form>
+{% endblock %}

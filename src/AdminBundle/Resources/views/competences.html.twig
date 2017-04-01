@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Efolio - Admin{% endblock %}
+
+{% block top_title %}Compétences{% endblock %}
+
+{% block content %}
+
+    {% if competences != null %}
+        <div class="panel">
+            <h1>Modifier mes compétences</h1>
+
+            <div class="panel-content">
+                {% for competence in competences %}
+                    <form action="{{ path("set_competence") }}" method="post">
+                        <input type="number" name="id" hidden value="{{ competence.getId() }}">
+                        <label for="competence">Compétence</label>
+                        <input type="text" name="competence" size="50" value="{{ competence.getCompetence() }}"/>
+                        <br><br>
+                        <label for="details">Détails</label>
+                        <input type="text" name="details" size="50" value="{{ competence.getDetails() }}"/>
+                        <br><br>
+                        <input type="submit" name="action" value="Modifier">
+                        <input type="submit" name="action" value="Supprimer">
+                    </form>
+
+                    {% if loop.last == false %}
+                        <br>
+                        <hr>
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="panel">
+        <h1>Nouvelle compétence</h1>
+
+        <div class="panel-content">
+            <form action="{{ path('add_competence') }}" method="POST">
+                <label for="competence">Compétence</label>
+                <input type="text" name="competence" size="50"/>
+                <br><br>
+                <label for="details">Détails</label>
+                <input type="text" name="details" size="50"/>
+                <br><br>
+                <button type="submit">Ajouter</button>
+                <button type="reset">Effacer</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

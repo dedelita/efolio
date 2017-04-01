@@ -40,6 +40,13 @@ class Publication
      */
     private $contenu;
 
+    public function __construct($titre, $contenu, $id_user)
+    {
+        $this->titre = $titre;
+        $this->contenu = $contenu;
+        $this->id_user = $id_user;
+    }
+
     /**
      * Get id
      *
@@ -53,11 +60,11 @@ class Publication
     /**
      * Set idUser
      *
-     * @param \number $idUser
+     * @param integer $idUser
      *
      * @return Publication
      */
-    public function setIdUser(\number $idUser)
+    public function setIdUser($idUser)
     {
         $this->id_user = $idUser;
 
@@ -67,7 +74,7 @@ class Publication
     /**
      * Get idUser
      *
-     * @return \number
+     * @return integer
      */
     public function getIdUser()
     {

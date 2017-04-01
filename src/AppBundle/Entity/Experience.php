@@ -29,9 +29,9 @@ class Experience
      */
     private $experience;
     /**
-     * @ORM\Column(name="years", type="text")
+     * @ORM\Column(name="annees", type="text")
      */
-    private $years;
+    private $annees;
 
     /**
      * @ORM\Column(name="id_user", type="integer")
@@ -39,10 +39,10 @@ class Experience
     private $id_user;
 
     
-    public function __construct($experience, $years, $id_user)
+    public function __construct($experience, $annees, $id_user)
     {
         $this->experience = $experience;
-        $this->years = $years;
+        $this->annees = $annees;
         $this->id_user  = $id_user;
     }
 
@@ -81,27 +81,27 @@ class Experience
     }
 
     /**
-     * Set years
+     * Set annees
      *
-     * @param string $years
+     * @param string $annees
      *
      * @return Experience
      */
-    public function setYears($years)
+    public function setAnnees($annees)
     {
-        $this->years = $years;
+        $this->annees = $annees;
 
         return $this;
     }
 
     /**
-     * Get years
+     * Get annees
      *
      * @return string
      */
-    public function getYears()
+    public function getAnnees()
     {
-        return $this->years;
+        return $this->annees;
     }
 
     /**
