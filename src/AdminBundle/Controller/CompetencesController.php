@@ -21,9 +21,10 @@ class CompetencesController extends Controller
     private function getInfoCompetence(Request $request) {
         $id = $request->get("id");
         $competence = $request->get('competence');
-        $details = $request->get('details');
+        $niveau = $request->get('niveau');
+        $logo = $request->files->get("logo");
 
-        return array("id" => $id, "competence" => $competence, "details" => $details);
+        return array("id" => $id, "competence" => $competence, "niveau" => $niveau, "logo" => $logo);
     }
 
     public function setCompetenceAction(Request $request)
@@ -39,7 +40,7 @@ class CompetencesController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $competence->setCompetence($info["competence"]);
-            $competence->setDetails($info["details"]);
+            $competence->setNiveau($info["niveau"]);
 
             $em->flush();
         } else {
@@ -57,13 +58,19 @@ class CompetencesController extends Controller
         $id_user = unserialize($session->get('user'))->getId();
         $competence = $this->getInfoCompetence($request);
 
+        $upload_dir = $this->container->getParameter('upload_dir');
+
+            $logo = $competence["logo"]->getClientOriginalName();
+            $competence["logo"]->move($upload_dir, $logo);
+
+        
         $em = $this->getDoctrine()->getManager();
 
-        $new_competence = new Competence($competence["competence"], $competence["details"], $id_user);
+        $new_competence = new Competence($competence["competence"], $logo, $competence["niveau"], $id_user);
 
         $em->persist($new_competence);
         $em->flush();
 
         return $this->redirect($this->generateUrl("admin_competences"));
-    }
+           }
 }

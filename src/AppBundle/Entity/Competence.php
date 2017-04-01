@@ -30,9 +30,14 @@ class Competence
     private $competence;
 
     /**
-     * @ORM\Column(name="details", type="text")
+     * @ORM\Column(name="logo", type="text")
      */
-    private $details;
+    private $logo;
+
+    /**
+     * @ORM\Column(name="niveau", type="text")
+     */
+    private $niveau;
 
     /**
      * @ORM\Column(name="id_user", type="integer")
@@ -42,15 +47,19 @@ class Competence
     /**
      * Competence constructor.
      * @param $competence
-     * @param $details
+     * @param $logo
+     * @param $niveau
      * @param $id_user
      */
-    public function __construct($competence, $details, $id_user)
+    public function __construct($competence, $logo, $niveau, $id_user)
     {
         $this->competence = $competence;
-        $this->details = $details;
+        $this->logo = $logo;
+        $this->niveau = $niveau;
         $this->id_user = $id_user;
     }
+
+
 
     /**
      * Get id
@@ -87,27 +96,51 @@ class Competence
     }
 
     /**
-     * Set details
+     * Set logo
      *
-     * @param string $details
+     * @param string $logo
      *
      * @return Competence
      */
-    public function setDetails($details)
+    public function setLogo($logo)
     {
-        $this->details = $details;
+        $this->logo = $logo;
 
         return $this;
     }
 
     /**
-     * Get details
+     * Get logo
      *
      * @return string
      */
-    public function getDetails()
+    public function getLogo()
     {
-        return $this->details;
+        return $this->logo;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     *
+     * @return Competence
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 
     /**

@@ -71,7 +71,7 @@
                     <p class="center">Aucune compétence n'a été ajoutée.</p>
                 {% else %}
                     {% for competence in competences %}
-                        <p>{{ competence.getCompetence() }} ({{ competence.getDetails() }})</p>
+                        <p>{{ competence.getCompetence() }} - {{ competence.getNiveau() }}</p>
 
                         {% if loop.last == false %}
                             <br>
