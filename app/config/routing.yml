@@ -46,18 +46,58 @@ set_competence:
     defaults: { _controller: AdminBundle:Competences:setCompetence }
     path: /admin/competences/modified
 
+admin_projets:
+    defaults: { _controller: AdminBundle:Projets:index }
+    path: /admin/projets/
+
 add_projet:
-    defaults: { _controller: AdminBundle:Folio:addProjet }
-    path: /admin/efolio
+    defaults: { _controller: AdminBundle:Projets:addProjet }
+    path: /admin/projets/added
+
+set_projet:
+    defaults: { _controller: AdminBundle:Projets:setProjet }
+    path: /admin/projets/modified
+
+admin_publication:
+    defaults: { _controller: AdminBundle:Publications:index }
+    path: /admin/publicaions/
 
 add_publication:
-    defaults: { _controller: AdminBundle:Folio:addPublication }
-    path: /admin/efolio
+    defaults: { _controller: AdminBundle:Publications:addPublication }
+    path: /admin/publications/added
+
+set_publication:
+    defaults: { _controller: AdminBundle:Publications:setPublication }
+    path: /admin/publications/modified
+
+admin_recommandations:
+    defaults: { _controller: AdminBundle:Recommandations:index }
+    path! /admin/recommandations/
 
 add_recommandation:
-    defaults: { _controller: AdminBundle:Folio:addRecommandation }
-    path: /admin/efolio
+    defaults: { _controller: AdminBundle:Recommandations:addRecommandation }
+    path: /admin/recommandations/added
+
+set_recommandation:
+    defaults: { _controller: AdminBundle:Recommandations:setRecommandation }
+    path: /admin/recommandations/modified
+
+admin_experience:
+    defaults: { _controller: AdminBundle:Experiences:index }
+    path: /admin/experiences/
 
 add_experience:
-    defaults: { _controller: AdminBundle:Folio:addExperience }
-    path: /admin/efolio
+    defaults: { _controller: AdminBundle:Experiences:addExperience }
+    path: /admin/experiences/added
+
+set_experience:
+    defaults: { _controller: AdminBundle:Experiences:setExperienxe }
+    path: /admin/experiences/modified
+
+admin_info:
+    defaults: { _controller: AdminBundle:User:index }
+    path: /admin/informations_personnelles/
+
+set_info:
+    defaults : { _controller: AdminBundle:User:setInfo }
+    path: /admin/informations_personnelles/modified
