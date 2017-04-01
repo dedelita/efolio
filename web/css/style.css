@@ -16,6 +16,11 @@ ul {
     list-style-type: none;
 }
 
+li {
+    margin: 10px;
+    display: inline-block;
+}
+
 form {
     text-align: start;
 }
@@ -35,11 +40,8 @@ button, input[type="submit"] {
 
 /* --------------------- POSITION DIV --------------------- */
 #top, #bottom {
-    margin: 5px;
     padding: 5px;
-    border: 1px solid blue;
-    border-radius: 5px;
-    background-color: #b3ffff;
+    background-color: #ff5959;
     text-align: center;
 }
 

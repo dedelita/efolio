@@ -1,10 +1,8 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Efolio - Admin{% endblock %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block top_title %}Compétences{% endblock %}
 
-{% block content %}
+{% block admin_content %}
 
     {% if competences != null %}
         <div class="panel">
@@ -14,15 +12,21 @@
                 {% for competence in competences %}
                     <form action="{{ path("set_competence") }}" method="post" enctype="multipart/form-data">
                         <input type="number" name="id" hidden value="{{ competence.getId() }}">
+
                         <label for="competence">Compétence</label>
                         <input type="text" name="competence" size="50" value="{{ competence.getCompetence() }}"/>
                         <br><br>
+
                         <label for="logo">Logo</label>
                         <input type="file" name="logo"/>
                         <br><br>
+
                         <label for="niveau">Niveau</label>
-                        <input type="text" name="niveau" size="50" value="{{ competence.getNiveau() }}"/>
+                        <input type='radio' name='niveau' value='Débutant'>Débutant
+                        <input type='radio' name='niveau' value='Moyen'>Moyen
+                        <input type='radio' name='niveau' value='Très Bon'>Très Bon
                         <br><br>
+
                         <input type="submit" name="action" value="Modifier">
                         <input type="submit" name="action" value="Supprimer">
                     </form>
@@ -51,9 +55,9 @@
                 <br><br>
 
                 <label for="niveau">Niveau</label>
-                <input type='radio' name='niveau' value='Basique'>Basique
-                <input type='radio' name='niveau' value='Moyen'>Moyen
-                <input type='radio' name='niveau' value='Très Bon'>Très Bon
+                <input type='radio' name='niveau' value='Débutant'>Débutant
+                <input type='radio' name='niveau' value='Confirmé'>Confirmé
+                <input type='radio' name='niveau' value='Expert'>Expert
 
                 <br><br>
                 <button type="submit">Ajouter</button>

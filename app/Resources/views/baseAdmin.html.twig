@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+
+{% block title %}Efolio - Admin{% endblock %}
+
+
+{% block content %}
+    {% block menu %}
+        <div class="menu">
+            <ul>
+                <li><a href="{{ path("admin_formations") }}">Formations</a></li>
+                |
+                <li><a href="{{ path("admin_experiences") }}">Expériences</a></li>
+                |
+                <li><a href="{{ path("admin_competences") }}">Compétences</a></li>
+                |
+                <li><a href="{{ path("admin_projets") }}">Projets</a></li>
+                |
+                <li><a href="{{ path("admin_recommandations") }}">Recommandations</a></li>
+                |
+                <li><a href="{{ path("admin_publications") }}">Publications</a></li>
+                |
+                <li><a href="{{ path("admin_deconnexion") }}">Déconnexion</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+
+    {% block admin_content %}{% endblock %}
+
+{% endblock %}

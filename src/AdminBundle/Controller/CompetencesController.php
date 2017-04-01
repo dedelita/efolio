@@ -2,10 +2,8 @@
 
 namespace AdminBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Competence;
 
 class CompetencesController extends Controller
@@ -18,7 +16,8 @@ class CompetencesController extends Controller
         return $this->render("AdminBundle::competences.html.twig", array("competences" => $competences));
     }
 
-    private function getInfoCompetence(Request $request) {
+    private function getInfoCompetence(Request $request)
+    {
         $id = $request->get("id");
         $competence = $request->get('competence');
         $niveau = $request->get('niveau');
@@ -60,10 +59,9 @@ class CompetencesController extends Controller
 
         $upload_dir = $this->container->getParameter('upload_dir');
 
-            $logo = $competence["logo"]->getClientOriginalName();
-            $competence["logo"]->move($upload_dir, $logo);
+        $logo = $competence["logo"]->getClientOriginalName();
+        $competence["logo"]->move($upload_dir, $logo);
 
-        
         $em = $this->getDoctrine()->getManager();
 
         $new_competence = new Competence($competence["competence"], $logo, $competence["niveau"], $id_user);
@@ -72,5 +70,5 @@ class CompetencesController extends Controller
         $em->flush();
 
         return $this->redirect($this->generateUrl("admin_competences"));
-           }
+    }
 }
