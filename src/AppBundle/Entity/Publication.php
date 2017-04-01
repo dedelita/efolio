@@ -36,14 +36,14 @@ class Publication
 
 
     /**
-     * @ORM\Column(name="contenu", type="text")
+     * @ORM\Column(name="publication", type="text")
      */
-    private $contenu;
+    private $publication;
 
-    public function __construct($titre, $contenu, $id_user)
+    public function __construct($titre, $publication, $id_user)
     {
         $this->titre = $titre;
-        $this->contenu = $contenu;
+        $this->publication = $publication;
         $this->id_user = $id_user;
     }
 
@@ -106,26 +106,26 @@ class Publication
     }
 
     /**
-     * Set contenu
+     * Set publication
      *
-     * @param string $contenu
+     * @param string $publication
      *
      * @return Publication
      */
-    public function setContenu($contenu)
+    public function setPublication($publication)
     {
-        $this->contenu = $contenu;
+        $this->publication = $publication;
 
         return $this;
     }
 
     /**
-     * Get contenu
+     * Get publication
      *
      * @return string
      */
-    public function getContenu()
+    public function getPublication()
     {
-        return $this->contenu;
+        return $this->publication;
     }
 }

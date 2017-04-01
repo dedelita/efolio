@@ -5,160 +5,141 @@
 {% block top_title %}Delphine Martinez Parra{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="sidebar-nav">
-                <div class="navbar-default navbar-fixed-side" role="navigation">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".sidebar-navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#formation">Formations</a></li>
-                            <li><a href="#experience">Expériences</a></li>
-                            <li><a href="#competence">Compétences</a></li>
-                            <li><a href="#projet">Projets réalisés</a></li>
-                            <li><a href="#recommandation">Recommandations</a></li>
-                            <li><a href="#publication">Publications</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="right">
+        <a href="{{ path("admin_connexion") }}">Administration - Connexion</a>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li class="active"><a href="#formation">Formations</a></li>
+            <li><a href="#experience">Expériences</a></li>
+            <li><a href="#competence">Compétences</a></li>
+            <li><a href="#projet">Projets réalisés</a></li>
+            <li><a href="#recommandation">Recommandations</a></li>
+            <li><a href="#publication">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="col-sm-10">
+        <div class="panel" id="formation">
+            <h1>Formations</h1>
+            <div class="panel-content">
+                {% if formations == null %}
+                    <p class="center">Aucune formation n'a été ajoutée.</p>
+                {% else %}
+                    {% for formation in formations %}
+                        {{ formation.getAnnees() }} - {{ formation.getFormation() }} - {{ formation.getEtablissement() }} ({{ formation.getVille() }})
+
+                        {% if loop.last == false %}
+                            <br>
+                            <hr>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
-        <div class="col-sm-10">
-            <div class="panel" id="formation">
-                <h1>Formations</h1>
-                <div class="panel-content">
-                    {% if formations == null %}
-                        <p>Aucune formation n'a été ajoutée.</p>
-                    {% else %}
-                        {% for formation in formations %}
-                            {{ formation.getAnnees() }} - {{ formation.getFormation() }} - {{ formation.getEtablissement() }} ({{ formation.getVille() }})
 
-                            {% if loop.last == false %}
-                                <br>
-                                <hr>
-                                <br>
-                            {% endif %}
+
+        <div class="panel" id="experience">
+            <h1>Expériences</h1>
+            <div class="panel-content">
+                {% if experiences == null %}
+                    <p class="center">Aucune expérience n'a été ajoutée.</p>
+                {% else %}
+                    <table>
+                        <th>Période</th>
+                        <th>Experience</th>
+                        <th>Entreprise</th>
+                        {% for experience in experiences %}
+                            <tr>
+                                <td>{{ experience.getPeriode() }}</td>
+                                <td>{{ experience.getExperience() }}</td>
+                                <td>{{ experience.getEntreprise() }}</td>
+                            </tr>
                         {% endfor %}
-                    {% endif %}
-                </div>
+                    </table>
+                {% endif %}
             </div>
+        </div>
 
+        <div class="panel" id="competence">
+            <h1>Compétences</h1>
+            <div class="panel-content">
+                {% if competences == null %}
+                    <p class="center">Aucune compétence n'a été ajoutée.</p>
+                {% else %}
+                    {% for competence in competences %}
+                        <p>{{ competence.getCompetence() }} ({{ competence.getDetails() }})</p>
 
-            <div class="panel" id="experience">
-                <h1>Expériences</h1>
-                <div class="panel-content">
-                    {% if experiences == null %}
-                        <p>Aucune expérience n'a été ajoutée.</p>
-                    {% else %}
-                        <table>
-                            <th>Période</th>
-                            <th>Experience</th>
-                            {% for experience in experiences %}
-                                <tr>
-                                    <td>{{ experience.getAnnees() }}</td>
-                                    <td>{{ experience.getExperience() }}</td>
-                                </tr>
-
-                                {% if loop.last == false %}
-                                    <br>
-                                    <hr>
-                                    <br>
-                                {% endif %}
-                            {% endfor %}
-                        </table>
-                    {% endif %}
-                </div>
+                        {% if loop.last == false %}
+                            <br>
+                            <hr>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
+        </div>
 
-            <div class="panel" id="competence">
-                <h1>Compétences</h1>
-                <div class="panel-content">
-                    {% if competences == null %}
-                        <p>Aucune compétence n'a été ajoutée.</p>
-                    {% else %}
-                        {% for competence in competences %}
-                            <p>{{ competence.getCompetence() }} ({{ competence.getDetails() }})</p>
+        <div class="panel" id="projet">
+            <h1>Projets Réalisés</h1>
+            <div class="panel-content">
+                {% if projets == null %}
+                    <p class="center">Aucun projet n'a été ajouté.</p>
+                {% else %}
+                    {% for projet in projets %}
+                        <p>{{ projet.getProjet() }} - {{ projet.getDescription() }}</p>
 
-                            {% if loop.last == false %}
-                                <br>
-                                <hr>
-                                <br>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </div>
+                        {% if loop.last == false %}
+                            <br>
+                            <hr>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
+        </div>
 
-            <div class="panel" id="projet">
-                <h1>Projets Réalisés</h1>
-                <div class="panel-content">
-                    {% if projets == null %}
-                        <p>Aucun projet n'a été ajouté.</p>
-                    {% else %}
-                        {% for projet in projets %}
-                            <p>{{ projet.getNom() }} - {{ projet.getDescription() }}</p>
+        <div class="panel" id="recommandation">
+            <h1>Recommandations</h1>
+            <div class="panel-content">
+                {% if recommandations == null %}
+                    <p class="center">Aucune recommandation n'a été ajoutée.</p>
+                {% else %}
+                    {% for recommandation in recommandations %}
+                        <p>{{ recommandation.getPersonne() }}</p>
+                        <p>{{ recommandation.getEntreprise() }}</p>
+                        <p>{{ recommandation.getRecommandation() }}</p>
 
-                            {% if loop.last == false %}
-                                <br>
-                                <hr>
-                                <br>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </div>
+                        {% if loop.last == false %}
+                            <br>
+                            <hr>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
+        </div>
 
-            <div class="panel" id="recommandation">
-                <h1>Recommandations</h1>
-                <div class="panel-content">
-                    {% if recommandations == null %}
-                        <p>Aucune recommandation n'a été ajoutée.</p>
-                    {% else %}
-                        {% for recommandation in recommandations %}
-                            <p>TO DO</p>
+        <div class="panel" id="publication">
+            <h1>Publications</h1>
+            <div class="panel-content">
+                {% if publications == null %}
+                    <p class="center">Aucune publication n'a été ajoutée.</p>
+                {% else %}
+                    {% for publication in publications %}
+                        <p>{{ publication.getTitre() }}</p>
+                        <p>{{ publication.getPublication() }}</p>
 
-                            {% if loop.last == false %}
-                                <br>
-                                <hr>
-                                <br>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="panel" id="publication">
-                <h1>Publications</h1>
-                <div class="panel-content">
-                    {% if publications == null %}
-                        <p>Aucune publication n'a été ajoutée.</p>
-                    {% else %}
-                        {% for publication in publications %}
-                            <p>{{ publication.getTitre() }}</p>
-                            <p>{{ publication.getContenu() }}</p>
-
-                            {% if loop.last == false %}
-                                <br>
-                                <hr>
-                                <br>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="panel" id="contact">
-                <h1>Contact</h1>
-                <div class="panel-content">MAIL</div>
+                        {% if loop.last == false %}
+                            <br>
+                            <hr>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

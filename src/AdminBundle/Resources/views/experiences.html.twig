@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Efolio - Admin{% endblock %}
+
+{% block top_title %}Experiences{% endblock %}
+
+{% block content %}
+
+    {% if experiences != null %}
+        <div class="panel">
+            <h1>Modifier mes experiences</h1>
+
+            <div class="panel-content">
+                {% for experience in experiences %}
+                    <form action="{{ path("set_experience") }}" method="post">
+                        <input type="number" name="id" hidden value="{{ experience.getId() }}">
+                        <label for="periode">Période</label>
+                        <input type="text" name="periode" size="50"
+                               value="{{ experience.getPeriode() }}"/>
+                        <br><br>
+                        <label for="experience">Experience </label>
+                        <input type="text" name="experience" size="50" value="{{ experience.getExperience() }}"/>
+                        <br><br>
+                        <label for="entreprise">Entreprise </label>
+                        <input type="text" name="entreprise" size="50" value="{{ experience.getEntreprise() }}"/>
+                        <br><br>
+                        <input type="submit" name="action" value="Modifier">
+                        <input type="submit" name="action" value="Supprimer">
+                    </form>
+
+                    {% if loop.last == false %}
+                        <br>
+                        <hr>
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="panel">
+        <h1>Nouvelle experience</h1>
+
+        <div class="panel-content">
+            <form action="{{ path('add_experience') }}" method="POST">
+                <label for="periode">Période</label>
+                <input type="text" name="periode" placeholder="XXXX - XXXX" size="10"/>
+                <br><br>
+                <label for="experience">Experience </label>
+                <input type="text" name="experience" size="50"/>
+                <br><br>
+                <label for="entreprise">Entreprise </label>
+                <input type="text" name="entreprise" size="50"/>
+                <br><br>
+                <button type="submit">Ajouter</button>
+                <button type="reset">Effacer</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

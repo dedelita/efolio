@@ -1,14 +1,10 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-    
-index:
-    defaults: { _controller: AppBundle:Folio:getEfolio }
-    path: /efolio
 
 efolio:
     defaults: { _controller: AppBundle:Folio:getEfolio }
-    path: /
+    path: /efolio
 
 admin_index:
     defaults: { _controller: AdminBundle:Folio:index }
@@ -27,7 +23,7 @@ admin_formations:
     path: /admin/formations/
 
 set_formation:
-    defaults: { _controller:AdminBundle:Formations:setFormation }
+    defaults: { _controller: AdminBundle:Formations:setFormation }
     path: /admin/formations/modified
 
 add_formation:
@@ -58,9 +54,9 @@ set_projet:
     defaults: { _controller: AdminBundle:Projets:setProjet }
     path: /admin/projets/modified
 
-admin_publication:
+admin_publications:
     defaults: { _controller: AdminBundle:Publications:index }
-    path: /admin/publicaions/
+    path: /admin/publications/
 
 add_publication:
     defaults: { _controller: AdminBundle:Publications:addPublication }
@@ -72,7 +68,7 @@ set_publication:
 
 admin_recommandations:
     defaults: { _controller: AdminBundle:Recommandations:index }
-    path! /admin/recommandations/
+    path: /admin/recommandations/
 
 add_recommandation:
     defaults: { _controller: AdminBundle:Recommandations:addRecommandation }
@@ -82,7 +78,7 @@ set_recommandation:
     defaults: { _controller: AdminBundle:Recommandations:setRecommandation }
     path: /admin/recommandations/modified
 
-admin_experience:
+admin_experiences:
     defaults: { _controller: AdminBundle:Experiences:index }
     path: /admin/experiences/
 
@@ -91,7 +87,7 @@ add_experience:
     path: /admin/experiences/added
 
 set_experience:
-    defaults: { _controller: AdminBundle:Experiences:setExperienxe }
+    defaults: { _controller: AdminBundle:Experiences:setExperience }
     path: /admin/experiences/modified
 
 admin_info:

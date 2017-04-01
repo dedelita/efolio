@@ -28,22 +28,35 @@ class Experience
      * @ORM\Column(name="experience", type="text")
      */
     private $experience;
+
     /**
-     * @ORM\Column(name="annees", type="text")
+     * @ORM\Column(name="periode", type="text")
      */
-    private $annees;
+    private $periode;
+
+    /**
+     * @ORM\Column(name="entreprise", type="text")
+     */
+    private $entreprise;
 
     /**
      * @ORM\Column(name="id_user", type="integer")
      */
     private $id_user;
 
-    
-    public function __construct($experience, $annees, $id_user)
+    /**
+     * Experience constructor.
+     * @param $experience
+     * @param $periode
+     * @param $entreprise
+     * @param $id_user
+     */
+    public function __construct($experience, $periode, $entreprise, $id_user)
     {
         $this->experience = $experience;
-        $this->annees = $annees;
-        $this->id_user  = $id_user;
+        $this->periode = $periode;
+        $this->entreprise = $entreprise;
+        $this->id_user = $id_user;
     }
 
     /**
@@ -81,33 +94,57 @@ class Experience
     }
 
     /**
-     * Set annees
+     * Set periode
      *
-     * @param string $annees
+     * @param string $periode
      *
      * @return Experience
      */
-    public function setAnnees($annees)
+    public function setPeriode($periode)
     {
-        $this->annees = $annees;
+        $this->periode = $periode;
 
         return $this;
     }
 
     /**
-     * Get annees
+     * Get periode
      *
      * @return string
      */
-    public function getAnnees()
+    public function getPeriode()
     {
-        return $this->annees;
+        return $this->periode;
+    }
+
+    /**
+     * Set entreprise
+     *
+     * @param string $entreprise
+     *
+     * @return Experience
+     */
+    public function setEntreprise($entreprise)
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get entreprise
+     *
+     * @return string
+     */
+    public function getEntreprise()
+    {
+        return $this->entreprise;
     }
 
     /**
      * Set idUser
      *
-     * @param string $idUser
+     * @param integer $idUser
      *
      * @return Experience
      */
@@ -121,7 +158,7 @@ class Experience
     /**
      * Get idUser
      *
-     * @return string
+     * @return integer
      */
     public function getIdUser()
     {

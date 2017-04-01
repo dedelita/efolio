@@ -30,9 +30,9 @@ class Projet
     private $id_user;
 
     /**
-     * @ORM\Column(name="nom", type="text")
+     * @ORM\Column(name="projet", type="text")
      */
-    private $nom;
+    private $projet;
 
     /**
      * @ORM\Column(name="description", type="text")
@@ -44,9 +44,9 @@ class Projet
      */
     private $annee;
 
-    public function __construct($nom, $description, $annee, $id_user)
+    public function __construct($projet, $annee, $description, $id_user)
     {
-        $this->nom = $nom;
+        $this->projet = $projet;
         $this->description = $description;
         $this->annee = $annee;
         $this->id_user = $id_user;
@@ -87,27 +87,27 @@ class Projet
     }
 
     /**
-     * Set nom
+     * Set projet
      *
-     * @param string $nom
+     * @param string $projet
      *
      * @return Projet
      */
-    public function setNom($nom)
+    public function setProjet($projet)
     {
-        $this->nom = $nom;
+        $this->projet = $projet;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get projet
      *
      * @return string
      */
-    public function getNom()
+    public function getProjet()
     {
-        return $this->nom;
+        return $this->projet;
     }
 
     /**
@@ -132,5 +132,29 @@ class Projet
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set annee
+     *
+     * @param integer $annee
+     *
+     * @return Projet
+     */
+    public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+
+    /**
+     * Get annee
+     *
+     * @return integer
+     */
+    public function getAnnee()
+    {
+        return $this->annee;
     }
 }

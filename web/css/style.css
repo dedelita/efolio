@@ -22,6 +22,7 @@ form {
 form > label {
     display: inline-block;
     width: 105px;
+    vertical-align: middle;
 }
 
 button, input[type="submit"] {
@@ -56,18 +57,44 @@ button, input[type="submit"] {
 }
 
 .panel {
-    width: 750px;
+    width: 130vh;
     border: 1px solid #C9C9C9;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .panel > h1 {
     background-color: #CCCCCC;
     margin:0;
+    padding: 5px;
 }
 
 .panel-content {
     text-align: justify;
     padding: 15px;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+/* --------------------- TABLE --------------------- */
+table {
+    border-collapse: collapse;
+}
+
+th {
+    border-bottom: 1px solid black;
+}
+
+td, th {
+    padding: 10px 25px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
 }

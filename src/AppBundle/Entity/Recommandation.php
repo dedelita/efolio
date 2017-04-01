@@ -40,15 +40,15 @@ class Recommandation
     private $entreprise;
 
     /**
-     * @ORM\Column(name="contenu", type="text")
+     * @ORM\Column(name="recommandation", type="text")
      */
-    private $contenu;
+    private $recommandation;
 
-    public function __construct($personne, $entreprise, $contenu, $id_user)
+    public function __construct($personne, $entreprise, $recommandation, $id_user)
     {
         $this->personne = $personne;
         $this->entreprise = $entreprise;
-        $this->contenu = $contenu;
+        $this->recommandation = $recommandation;
         $this->id_user = $id_user;
     }
 
@@ -65,11 +65,11 @@ class Recommandation
     /**
      * Set idUser
      *
-     * @param \number $idUser
+     * @param integer $idUser
      *
      * @return Recommandation
      */
-    public function setIdUser(\number $idUser)
+    public function setIdUser($idUser)
     {
         $this->id_user = $idUser;
 
@@ -79,7 +79,7 @@ class Recommandation
     /**
      * Get idUser
      *
-     * @return \number
+     * @return integer
      */
     public function getIdUser()
     {
@@ -135,26 +135,26 @@ class Recommandation
     }
 
     /**
-     * Set contenu
+     * Set recommandation
      *
-     * @param string $contenu
+     * @param string $recommandation
      *
      * @return Recommandation
      */
-    public function setContenu($contenu)
+    public function setRecommandation($recommandation)
     {
-        $this->contenu = $contenu;
+        $this->recommandation = $recommandation;
 
         return $this;
     }
 
     /**
-     * Get contenu
+     * Get recommandation
      *
      * @return string
      */
-    public function getContenu()
+    public function getRecommandation()
     {
-        return $this->contenu;
+        return $this->recommandation;
     }
 }
