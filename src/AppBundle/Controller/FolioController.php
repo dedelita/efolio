@@ -2,11 +2,12 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Formation;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class FolioController extends Controller
 {
@@ -88,6 +89,18 @@ class FolioController extends Controller
     }
 
 
+    public function getContact()
+    {
+        $form = $this->createFormBuilder()
+            ->add('email', EmailType::class, array('label' => "Votre adresse mail"))
+            ->add('titre', TextType::class, array('label' => "Votre objet"))
+            ->add('msg', TextareaType::class, array('label' => false, 'attr' => array('rows' => 15, 'cols' => 75)))
+            ->add('Envoyer', SubmitType::class)
+            ->getForm();
+
+        return $form->createView();
+    }
+
     //EFolio
     public function getEfolioAction() {
         $formations = $this->getFormations();
@@ -96,6 +109,7 @@ class FolioController extends Controller
         $projets = $this->getProjets();
         $recommandations = $this->getRecommandations();
         $publications = $this->getPublications();
+        $contact = $this->getContact();
 
         return $this->render('AppBundle::efolio.html.twig',
             array('formations' => $formations,
@@ -103,6 +117,7 @@ class FolioController extends Controller
                 'competences' => $competences,
                 'publications' => $publications,
                 'projets' => $projets,
-                'recommandations' => $recommandations));
+                'recommandations' => $recommandations,
+                'contact' => $contact));
     }
 }

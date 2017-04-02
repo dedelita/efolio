@@ -21,10 +21,10 @@ class ExperiencesController extends Controller
     private function getInfoExperience(Request $request) {
         $id = $request->get("id");
         $experience = $request->get('experience');
-        $annees = $request->get('annees');
+        $periode = $request->get('periode');
         $entreprise = $request->get('entreprise');
 
-        return array("id" => $id, "experience" => $experience, "annees" => $annees, "entreprise" => $entreprise);
+        return array("id" => $id, "experience" => $experience, "periode" => $periode, "entreprise" => $entreprise);
     }
 
     public function setExperienceAction(Request $request)
@@ -40,7 +40,7 @@ class ExperiencesController extends Controller
             $em = $this->getDoctrine()->getManager();
             
             $experience->setExperience($info["experience"]);
-            $experience->setAnnees($info["annees"]);
+            $experience->setPeriode($info["periode"]);
             $experience->setEntreprise($info["entreprise"]);
 
             $em->flush();
@@ -61,7 +61,7 @@ class ExperiencesController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $new_experience = new Experience($experience["experience"], $experience["annees"], $experience["entreprise"], $id_user);
+        $new_experience = new Experience($experience["experience"], $experience["periode"], $experience["entreprise"], $id_user);
 
         $em->persist($new_experience);
         $em->flush();

@@ -3,28 +3,20 @@
 
 {% block title %}Efolio - Admin{% endblock %}
 
-
-{% block content %}
     {% block menu %}
-        <div class="menu">
-            <ul>
-                <li><a href="{{ path("admin_formations") }}">Formations</a></li>
-                |
-                <li><a href="{{ path("admin_experiences") }}">Expériences</a></li>
-                |
-                <li><a href="{{ path("admin_competences") }}">Compétences</a></li>
-                |
-                <li><a href="{{ path("admin_projets") }}">Projets</a></li>
-                |
-                <li><a href="{{ path("admin_recommandations") }}">Recommandations</a></li>
-                |
-                <li><a href="{{ path("admin_publications") }}">Publications</a></li>
-                |
-                <li><a href="{{ path("admin_deconnexion") }}">Déconnexion</a></li>
-            </ul>
-        </div>
+        <li><a href="{{ path("admin_formations") }}"><i class="fa fa-graduation-cap"></i> Formations</a></li>
+        |
+        <li><a href="{{ path("admin_experiences") }}"><i class="fa fa-briefcase"></i> Expériences</a></li>
+        |
+        <li><a href="{{ path("admin_competences") }}"><i class="fa fa-cogs"></i> Compétences</a></li>
+        |
+        <li><a href="{{ path("admin_projets") }}"><i class="fa fa-code"></i> Projets</a></li>
+        |
+        <li><a href="{{ path("admin_recommandations") }}"><i class="fa fa-bullhorn"></i> Recommandations</a></li>
+        |
+        <li><a href="{{ path("admin_publications") }}"><i class="fa fa-quote-left"></i> Publications</a></li>
+        |
+        <li><a href="{{ path("admin_deconnexion") }}"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
     {% endblock %}
 
-    {% block admin_content %}{% endblock %}
-
-{% endblock %}
+{% block content %}{% endblock %}

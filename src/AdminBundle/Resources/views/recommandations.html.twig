@@ -2,33 +2,41 @@
 
 {% block top_title %}Recommandations{% endblock %}
 
-{% block admin_content %}
+{% block content %}
 
     {% if recommandations != null %}
         <div class="panel">
-            <h1>Modifier mes recommandations</h1>
+            <h1><i class="fa fa-edit"></i> Modifier mes recommandations</h1>
 
             <div class="panel-content">
                 {% for recommandation in recommandations %}
                     <form action="{{ path("set_recommandation") }}" method="post">
                         <input type="number" name="id" hidden value="{{ recommandation.getId() }}">
-                        <label for="personne">Personne</label>
-                        <input type="text" name="personne" size="50" value="{{ recommandation.getPersonne() }}"/>
-                        <br><br>
-                        <label for="entreprise">Entreprise</label>
-                        <input type="text" name="entreprise" size="50" value="{{ recommandation.getEntreprise() }}">
-                        <br><br>
-                        <label for="recommandation">Recommandation </label>
-                        <textarea name="recommandation" rows="5" cols="50">{{ recommandation.getRecommandation() }}</textarea>
-                        <br><br>
-                        <input type="submit" name="action" value="Modifier">
-                        <input type="submit" name="action" value="Supprimer">
+
+                        <div class="form-row">
+                            <label for="personne">Personne</label>
+                            <input type="text" name="personne" size="50" value="{{ recommandation.getPersonne() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="entreprise">Entreprise</label>
+                            <input type="text" name="entreprise" size="50" value="{{ recommandation.getEntreprise() }}">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="recommandation">Recommandation </label>
+                        <textarea name="recommandation" rows="5"
+                                  cols="50">{{ recommandation.getRecommandation() }}</textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" name="action" value="Modifier">
+                            <input type="submit" name="action" value="Supprimer">
+                        </div>
                     </form>
 
                     {% if loop.last == false %}
-                        <br>
                         <hr>
-                        <br>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -36,21 +44,29 @@
     {% endif %}
 
     <div class="panel">
-        <h1>Nouvelle recommandation</h1>
+        <h1><i class="fa fa-plus"></i> Nouvelle recommandation</h1>
 
         <div class="panel-content">
             <form action="{{ path('add_recommandation') }}" method="POST">
-                <label for="personne">Personne</label>
-                <input type="text" name="personne" size="50"/>
-                <br><br>
-                <label for="entreprise">Entreprise</label>
-                <input name="entreprise" size="50">
-                <br><br>
-                <label for="recommandation">Recommandation </label>
-                <textarea name="recommandation" rows="5" cols="50"></textarea>
-                <br><br>
-                <button type="submit">Ajouter</button>
-                <button type="reset">Effacer</button>
+                <div class="form-row">
+                    <label for="personne">Personne</label>
+                    <input type="text" name="personne" size="50"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="entreprise">Entreprise</label>
+                    <input name="entreprise" size="50">
+                </div>
+
+                <div class="form-row">
+                    <label for="recommandation">Recommandation </label>
+                    <textarea name="recommandation" rows="5" cols="50"></textarea>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit">Ajouter</button>
+                    <button type="reset">Effacer</button>
+                </div>
             </form>
         </div>
     </div>

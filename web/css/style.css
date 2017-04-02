@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Arimo');
 /* --------------------- GENERAL --------------------- */
 body {
     display: flex;
@@ -12,6 +13,20 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+}
+
+.menu, .menu a {
+    color: #e9322d;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-family: 'Arimo', sans-serif;
+}
+
 ul {
     list-style-type: none;
 }
@@ -19,22 +34,46 @@ ul {
 li {
     margin: 10px;
     display: inline-block;
+    font-weight: bold;
+    font-size: large;
 }
 
+/*FORM*/
 form {
-    text-align: start;
+    width: 75%;
+    margin: 15px auto;
 }
 
-form > label {
-    display: inline-block;
-    width: 105px;
-    vertical-align: middle;
+.form-row {
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 20px;
 }
 
+.form-row > label {
+    width: 25%;
+    font-weight: bold;
+    text-align: right;
+}
+
+.form-row > input, .form-row > textarea {
+    width: 70%;
+    margin: auto 20px;
+}
+
+.form-submit {
+    text-align: center;
+}
+
+.form-submit input[type="submit"] {
+    margin: 0 15px;
+}
+
+/*BUTTON*/
 button, input[type="submit"] {
     border: transparent;
     border-radius: 5px;
-    width: 80px;
+    width: 90px;
     height: 25px;
 }
 
@@ -62,24 +101,25 @@ button, input[type="submit"] {
 
 /* --------------------- PANEL --------------------- */
 .panel {
-    width: 130vh;
-    border: 1px solid #C9C9C9;
+    width: 150vh;
+    border: 2px solid #ffcccc;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin: 20px auto;
 }
 
 .panel > h1 {
-    background-color: #CCCCCC;
+    background-color: #ffcccc;
     margin:0;
     padding: 5px;
 }
 
 .panel-content {
+    margin: auto;
     text-align: justify;
     padding: 15px;
 }
 
-/* --------------------- POSITION TEXTE --------------------- */
+/* --------------------- TEXTE --------------------- */
 .center {
     text-align: center;
 }
@@ -88,6 +128,9 @@ button, input[type="submit"] {
     text-align: right;
 }
 
+.small-text {
+    font-size: medium;
+}
 /* --------------------- TABLE --------------------- */
 table {
     border-collapse: collapse;

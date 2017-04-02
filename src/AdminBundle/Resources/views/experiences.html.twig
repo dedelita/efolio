@@ -1,35 +1,41 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block top_title %}Experiences{% endblock %}
+{% block top_title %}Expériences{% endblock %}
 
-{% block admin_content %}
+{% block content %}
 
     {% if experiences != null %}
         <div class="panel">
-            <h1>Modifier mes experiences</h1>
+            <h1><i class="fa fa-edit"></i> Modifier mes expériences</h1>
 
             <div class="panel-content">
                 {% for experience in experiences %}
                     <form action="{{ path("set_experience") }}" method="post">
                         <input type="number" name="id" hidden value="{{ experience.getId() }}">
-                        <label for="periode">Période</label>
-                        <input type="text" name="periode" size="50"
-                               value="{{ experience.getPeriode() }}"/>
-                        <br><br>
-                        <label for="experience">Experience </label>
-                        <input type="text" name="experience" size="50" value="{{ experience.getExperience() }}"/>
-                        <br><br>
-                        <label for="entreprise">Entreprise </label>
-                        <input type="text" name="entreprise" size="50" value="{{ experience.getEntreprise() }}"/>
-                        <br><br>
-                        <input type="submit" name="action" value="Modifier">
-                        <input type="submit" name="action" value="Supprimer">
+
+                        <div class="form-row">
+                            <label for="periode">Période</label>
+                            <input type="text" name="periode" size="50" value="{{ experience.getPeriode() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="experience">Expérience </label>
+                            <input type="text" name="experience" size="50" value="{{ experience.getExperience() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="entreprise">Entreprise </label>
+                            <input type="text" name="entreprise" size="50" value="{{ experience.getEntreprise() }}"/>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" name="action" value="Modifier">
+                            <input type="submit" name="action" value="Supprimer">
+                        </div>
                     </form>
 
                     {% if loop.last == false %}
-                        <br>
                         <hr>
-                        <br>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -37,21 +43,29 @@
     {% endif %}
 
     <div class="panel">
-        <h1>Nouvelle experience</h1>
+        <h1><i class="fa fa-plus"></i> Nouvelle expérience</h1>
 
         <div class="panel-content">
             <form action="{{ path('add_experience') }}" method="POST">
-                <label for="periode">Période</label>
-                <input type="text" name="periode" placeholder="XXXX - XXXX" size="10"/>
-                <br><br>
-                <label for="experience">Experience </label>
-                <input type="text" name="experience" size="50"/>
-                <br><br>
-                <label for="entreprise">Entreprise </label>
-                <input type="text" name="entreprise" size="50"/>
-                <br><br>
-                <button type="submit">Ajouter</button>
-                <button type="reset">Effacer</button>
+                <div class="form-row">
+                    <label for="periode">Période</label>
+                    <input type="text" name="periode" size="50"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="experience">Expérience </label>
+                    <input type="text" name="experience" size="50"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="entreprise">Entreprise </label>
+                    <input type="text" name="entreprise" size="50"/>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit">Ajouter</button>
+                    <button type="reset">Effacer</button>
+                </div>
             </form>
         </div>
     </div>

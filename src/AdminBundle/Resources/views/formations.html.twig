@@ -2,37 +2,47 @@
 
 {% block top_title %}Formations{% endblock %}
 
-{% block admin_content %}
+{% block content %}
 
     {% if formations != null %}
         <div class="panel">
-            <h1>Modifier mes formations</h1>
+            <h1><i class="fa fa-edit"></i> Modifier mes formations</h1>
 
             <div class="panel-content">
                 {% for formation in formations %}
                     <form action="{{ path("set_formation") }}" method="post">
                         <input type="number" name="id" hidden value="{{ formation.getId() }}">
-                        <label for="annees">Années</label>
-                        <input type="text" name="annees" placeholder="XXXX - XXXX" size="10"
-                               value="{{ formation.getAnnees() }}"/>
-                        <br><br>
-                        <label for="formation">Formation </label>
-                        <input type="text" name="formation" size="50" value="{{ formation.getFormation() }}"/>
-                        <br><br>
-                        <label for="etablissement">Etablissement</label>
-                        <input type="text" name="etablissement" size="50" value="{{ formation.getEtablissement() }}"/>
-                        <br><br>
-                        <label for="ville">Ville</label>
-                        <input type="text" name="ville" size="50" value="{{ formation.getVille() }}"/>
-                        <br><br>
-                        <input type="submit" name="action" value="Modifier">
-                        <input type="submit" name="action" value="Supprimer">
+
+                        <div class="form-row">
+                            <label for="annees">Années</label>
+                            <input type="text" name="annees" placeholder="XXXX/XXXX"
+                                   value="{{ formation.getAnnees() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="formation">Formation </label>
+                            <input type="text" name="formation" value="{{ formation.getFormation() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="etablissement">Etablissement</label>
+                            <input type="text" name="etablissement"
+                                   value="{{ formation.getEtablissement() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="ville">Ville</label>
+                            <input type="text" name="ville" value="{{ formation.getVille() }}"/>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" name="action" value="Modifier">
+                            <input type="submit" name="action" value="Supprimer">
+                        </div>
                     </form>
 
                     {% if loop.last == false %}
-                        <br>
                         <hr>
-                        <br>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -40,24 +50,34 @@
     {% endif %}
 
     <div class="panel">
-        <h1>Nouvelle formation</h1>
+        <h1><i class="fa fa-plus"></i> Nouvelle formation</h1>
 
         <div class="panel-content">
             <form action="{{ path('add_formation') }}" method="POST">
-                <label for="annees">Années</label>
-                <input type="text" name="annees" placeholder="XXXX - XXXX" size="10"/>
-                <br><br>
-                <label for="formation">Formation </label>
-                <input type="text" name="formation" size="50"/>
-                <br><br>
-                <label for="etablissement">Etablissement</label>
-                <input type="text" name="etablissement" size="50"/>
-                <br><br>
-                <label for="ville">Ville</label>
-                <input type="text" name="ville" size="50"/>
-                <br><br>
-                <button type="submit">Ajouter</button>
-                <button type="reset">Effacer</button>
+                <div class="form-row">
+                    <label for="annees">Années</label>
+                    <input type="text" name="annees"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="formation">Formation </label>
+                    <input type="text" name="formation"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="etablissement">Etablissement</label>
+                    <input type="text" name="etablissement"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="ville">Ville</label>
+                    <input type="text" name="ville"/>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit">Ajouter</button>
+                    <button type="reset">Effacer</button>
+                </div>
             </form>
         </div>
     </div>

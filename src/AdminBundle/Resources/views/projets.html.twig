@@ -4,34 +4,41 @@
 
 {% block top_title %}Projets{% endblock %}
 
-{% block admin_content %}
+{% block content %}
 
     {% if projets != null %}
         <div class="panel">
-            <h1>Modifier mes projets</h1>
+            <h1><i class="fa fa-edit"></i> Modifier mes projets</h1>
 
             <div class="panel-content">
                 {% for projet in projets %}
                     <form action="{{ path("set_projet") }}" method="post">
                         <input type="number" name="id" hidden value="{{ projet.getId() }}">
-                        <label for="annee">Année</label>
-                        <input type="text" name="annee" size="10"
-                               value="{{ projet.getAnnee() }}"/>
-                        <br><br>
-                        <label for="projet">Projet </label>
-                        <input type="text" name="projet" size="50" value="{{ projet.getProjet() }}"/>
-                        <br><br>
-                        <label for="description">Description</label>
-                        <textarea name="description" rows="5" cols="50">{{ projet.getDescription() }}</textarea>
-                        <br><br>
-                        <input type="submit" name="action" value="Modifier">
-                        <input type="submit" name="action" value="Supprimer">
+
+                        <div class="form-row">
+                            <label for="annee">Année</label>
+                            <input type="text" name="annee" size="10"
+                                   value="{{ projet.getAnnee() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="projet">Projet </label>
+                            <input type="text" name="projet" size="50" value="{{ projet.getProjet() }}"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="description">Description</label>
+                            <textarea name="description" rows="5" cols="50">{{ projet.getDescription() }}</textarea>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" name="action" value="Modifier">
+                            <input type="submit" name="action" value="Supprimer">
+                        </div>
                     </form>
 
                     {% if loop.last == false %}
-                        <br>
                         <hr>
-                        <br>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -39,21 +46,29 @@
     {% endif %}
 
     <div class="panel">
-        <h1>Nouvelle projet</h1>
+        <h1><i class="fa fa-plus"></i> Nouveau projet</h1>
 
         <div class="panel-content">
             <form action="{{ path('add_projet') }}" method="POST">
-                <label for="annee">Année</label>
-                <input type="text" name="annee" size="10"/>
-                <br><br>
-                <label for="projet">Projet </label>
-                <input type="text" name="projet" size="50"/>
-                <br><br>
-                <label for="description">Description</label>
-                <textarea name="description" rows="5" cols="50"></textarea>
-                <br><br>
-                <button type="submit">Ajouter</button>
-                <button type="reset">Effacer</button>
+                <div class="form-row">
+                    <label for="annee">Année</label>
+                    <input type="text" name="annee" size="10"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="projet">Projet </label>
+                    <input type="text" name="projet" size="50"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="description">Description</label>
+                    <textarea name="description" rows="5" cols="50"></textarea>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit">Ajouter</button>
+                    <button type="reset">Effacer</button>
+                </div>
             </form>
         </div>
     </div>

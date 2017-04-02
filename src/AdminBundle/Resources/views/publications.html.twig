@@ -2,30 +2,35 @@
 
 {% block top_title %}Publications{% endblock %}
 
-{% block admin_content %}
+{% block content %}
 
     {% if publications != null %}
         <div class="panel">
-            <h1>Modifier mes publications</h1>
+            <h1><i class="fa fa-edit"></i> Modifier mes publications</h1>
 
             <div class="panel-content">
                 {% for publication in publications %}
                     <form action="{{ path("set_publication") }}" method="post">
                         <input type="number" name="id" hidden value="{{ publication.getId() }}">
+
+                        <div class="form-row">
                         <label for="titre">Titre</label>
                         <input type="text" name="titre" size="50" value="{{ publication.getTitre() }}"/>
-                        <br><br>
+                        </div>
+
+                            <div class="form-row">
                         <label for="publication">Publication </label>
                         <textarea name="publication" rows="5" cols="50">{{ publication.getPublication() }}</textarea>
-                        <br><br>
-                        <input type="submit" name="action" value="Modifier">
-                        <input type="submit" name="action" value="Supprimer">
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" name="action" value="Modifier">
+                            <input type="submit" name="action" value="Supprimer">
+                        </div>
                     </form>
 
                     {% if loop.last == false %}
-                        <br>
                         <hr>
-                        <br>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -33,18 +38,24 @@
     {% endif %}
 
     <div class="panel">
-        <h1>Nouvelle publication</h1>
+        <h1><i class="fa fa-plus"></i> Nouvelle publication</h1>
 
         <div class="panel-content">
             <form action="{{ path('add_publication') }}" method="POST">
+                <div class="form-row">
                 <label for="titre">Titre</label>
                 <input type="text" name="titre" size="50"/>
-                <br><br>
+                </div>
+
+                    <div class="form-row">
                 <label for="publication">Publication </label>
                 <textarea name="publication" rows="5" cols="50"></textarea>
-                <br><br>
-                <button type="submit">Ajouter</button>
-                <button type="reset">Effacer</button>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit">Ajouter</button>
+                    <button type="reset">Effacer</button>
+                </div>
             </form>
         </div>
     </div>

@@ -4,16 +4,26 @@
 
 {% block top_title %}EFolio - Connexion{% endblock %}
 
-{% block content %}
-    <p>{{ erreur }}</p>
+{% block menu %}{% endblock %}
 
-    <form action="{{ path("admin_connexion") }}" method="post">
-        Email : <input name="email" type="email">
-        <br>
-        <br>
-        Mot de passe : <input name="password" type="password">
-        <br>
-        <br>
-        <input type="submit" value="Connexion">
+{% block content %}
+    <p class="error">{{ erreur }}</p>
+
+    <div class="panel">
+    <form action="{{ path('admin_connexion') }}" method="POST">
+        <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email"/>
+        </div>
+
+        <div class="form-row">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password"/>
+        </div>
+
+        <div class="form-submit">
+            <button type="submit">Connexion</button>
+        </div>
     </form>
+    </div>
 {% endblock %}
