@@ -79,10 +79,12 @@ class FolioController extends Controller
     }
 
     public function addRecommandationAction(Request $request) {
+        $session = $request->getSession();
+        $id_user = $session->get('id');
+        
         $personne = $request->get('personne');
         $entreprise = $request->get('entreprise');
         $contenu = $request->get('contenu');
-        $id_user = 1;
 
 
         $em = $this->getDoctrine()->getManager();

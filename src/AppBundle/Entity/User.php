@@ -44,9 +44,14 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(name="age", type="integer")
+     * @ORM\Column(name="date_naissance", type="text")
      */
-    private $age;
+    private $date_naissance;
+
+    /**
+     * @ORM\Column(name="permis", type="boolean")
+     */
+    private $permis;
 
 
     /**
@@ -108,27 +113,27 @@ class User
     }
 
     /**
-     * Set age
+     * Set date_naissance
      *
-     * @param int $age
+     * @param int $date_naissance
      *
      * @return User
      */
-    public function setAge($age)
+    public function setDateNaissance($date_naissance)
     {
-        $this->age = $age;
+        $this->date_naissance = $date_naissance;
 
         return $this;
     }
 
     /**
-     * Get age
+     * Get date_naissance
      *
      * @return int
      */
-    public function getAge()
+    public function getDateNaissance()
     {
-        return $this->age;
+        return $this->date_naissance;
     }
 
     /**
@@ -179,4 +184,28 @@ class User
         return $this->password;
     }
 
+
+    /**
+     * Set permis
+     *
+     * @param boolean $permis
+     *
+     * @return User
+     */
+    public function setPermis($permis)
+    {
+        $this->permis = $permis;
+
+        return $this;
+    }
+
+    /**
+     * Get permis
+     *
+     * @return boolean
+     */
+    public function getPermis()
+    {
+        return $this->permis;
+    }
 }

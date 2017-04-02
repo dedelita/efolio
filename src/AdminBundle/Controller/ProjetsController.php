@@ -57,7 +57,7 @@ class ProjetsController extends Controller
     public function addProjetAction(Request $request)
     {
         $session = $request->getSession();
-        $id_user = unserialize($session->get('user'))->getId();
+        $id_user = $session->get('id');
         $projet = $this->getInfoProjet($request);
 
         $em = $this->getDoctrine()->getManager();

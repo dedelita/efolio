@@ -63,7 +63,7 @@ class FormationsController extends Controller
     public function addFormationAction(Request $request)
     {
         $session = $request->getSession();
-        $id_user = unserialize($session->get('user'))->getId();
+        $id_user = $session->get('id');
         $formation = $this->getInfoFormation($request);
 
         $em = $this->getDoctrine()->getManager();

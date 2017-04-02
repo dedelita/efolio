@@ -56,7 +56,7 @@ class ExperiencesController extends Controller
     public function addExperienceAction(Request $request)
     {
         $session = $request->getSession();
-        $id_user = unserialize($session->get('user'))->getId();
+        $id_user = $session->get('id');
         $experience = $this->getInfoExperience($request);
 
         $em = $this->getDoctrine()->getManager();

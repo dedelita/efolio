@@ -57,7 +57,8 @@ class RecommandationsController extends Controller
     public function addRecommandationAction(Request $request)
     {
         $session = $request->getSession();
-        $id_user = unserialize($session->get('user'))->getId();
+        $session = $request->getSession();
+        $id_user = $session->get('id');
         $recommandation = $this->getInfoRecommandation($request);
 
         $em = $this->getDoctrine()->getManager();

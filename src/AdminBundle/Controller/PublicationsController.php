@@ -54,7 +54,7 @@ class PublicationsController extends Controller
     public function addPublicationAction(Request $request)
     {
         $session = $request->getSession();
-        $id_user = unserialize($session->get('user'))->getId();
+        $id_user = $session->get('id');
         $publication = $this->getInfoPublication($request);
 
         $em = $this->getDoctrine()->getManager();

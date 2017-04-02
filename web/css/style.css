@@ -1,10 +1,13 @@
+/* --------------------- FONT --------------------- */
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 @import url('https://fonts.googleapis.com/css?family=Arimo');
+
 /* --------------------- GENERAL --------------------- */
 body {
     display: flex;
     flex-direction: column;
+    min-width: 600px;
     min-height: 100vh;
     margin: 0;
 }
@@ -16,10 +19,6 @@ body {
 a {
     text-decoration: none;
     font-family: 'Oswald', sans-serif;
-}
-
-.menu, .menu a {
-    color: #e9322d;
 }
 
 h1 {
@@ -38,7 +37,12 @@ li {
     font-size: large;
 }
 
-/*FORM*/
+/* --------------------- MENU --------------------- */
+.menu, .menu a {
+    color: #e9322d;
+}
+
+/* --------------------- FORM --------------------- */
 form {
     width: 75%;
     margin: 15px auto;
@@ -46,7 +50,6 @@ form {
 
 .form-row {
     display: flex;
-    justify-content:space-between;
     margin-bottom: 20px;
 }
 
@@ -55,7 +58,9 @@ form {
     font-weight: bold;
     text-align: right;
 }
-
+.form-row > label.label-radio {
+    width: 10%;
+}
 .form-row > input, .form-row > textarea {
     width: 70%;
     margin: auto 20px;
@@ -69,7 +74,7 @@ form {
     margin: 0 15px;
 }
 
-/*BUTTON*/
+/* --------------------- BUTTON --------------------- */
 button, input[type="submit"] {
     border: transparent;
     border-radius: 5px;
@@ -99,9 +104,30 @@ button, input[type="submit"] {
     text-align: center;
 }
 
+/* --------------------- COMPETENCE --------------------- */
+.competence {
+    display: inline-block;
+    text-align: center;
+    margin: auto 20px;
+}
+
+.competence-titre {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.competence-niveau {
+    margin-top: 0;
+    font-style: italic;
+}
+
+/* --------------------- FORMATION --------------------- */
+.formation {
+    padding-left: 3%;
+}
 /* --------------------- PANEL --------------------- */
 .panel {
-    width: 150vh;
+    width: 80%;
     border: 2px solid #ffcccc;
     border-radius: 5px;
     margin: 20px auto;
@@ -114,7 +140,8 @@ button, input[type="submit"] {
 }
 
 .panel-content {
-    margin: auto;
+    width: 90%;
+    margin: 15px auto;
     text-align: justify;
     padding: 15px;
 }
@@ -133,6 +160,7 @@ button, input[type="submit"] {
 }
 /* --------------------- TABLE --------------------- */
 table {
+    margin: auto;
     border-collapse: collapse;
 }
 

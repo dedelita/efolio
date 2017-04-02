@@ -6,6 +6,9 @@ efolio:
     defaults: { _controller: AppBundle:Folio:getEfolio }
     path: /efolio
 
+contact_me:
+    defaults: { _controller: AppBundle:Folio:sendMail }
+    path: /efolio/mail_envoye
 admin_index:
     defaults: { _controller: AdminBundle:Folio:index }
     path: /admin/efolio

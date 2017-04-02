@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -93,12 +94,28 @@ class FolioController extends Controller
     {
         $form = $this->createFormBuilder()
             ->add('email', EmailType::class, array('label' => "Votre adresse mail"))
-            ->add('titre', TextType::class, array('label' => "Votre objet"))
+            ->add('objet', TextType::class, array('label' => "Votre objet"))
             ->add('msg', TextareaType::class, array('label' => false, 'attr' => array('rows' => 15, 'cols' => 75)))
             ->add('Envoyer', SubmitType::class)
             ->getForm();
 
         return $form->createView();
+    }
+
+    public function sendMailAction(Request $request)
+    {
+        $form = $request->get("form");
+        $to = "delphine.martinezparra@gmail.com";
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($form["objet"])
+            ->setFrom($form["email"])
+            ->setTo($to)
+            ->setBody($form["msg"]);
+
+        $this->get("mailer")->send($message);
+
+        return $this->getEfolioAction();
     }
 
     //EFolio

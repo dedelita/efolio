@@ -38,8 +38,16 @@ class CompetencesController extends Controller
         if ($action == "Modifier") {
             $em = $this->getDoctrine()->getManager();
 
+            $upload_dir = $this->container->getParameter('upload_dir');
+
+            $name = $info["logo"]->getClientOriginalName();
+            $info["logo"]->move($upload_dir, $name);
+
+            $logo = $upload_dir . "/" . $name;
+
             $competence->setCompetence($info["competence"]);
             $competence->setNiveau($info["niveau"]);
+            $competence->setLogo($logo);
 
             $em->flush();
         } else {
@@ -54,14 +62,15 @@ class CompetencesController extends Controller
     public function addCompetenceAction(Request $request)
     {
         $session = $request->getSession();
-        $id_user = unserialize($session->get('user'))->getId();
+        $id_user = $session->get('id');
         $competence = $this->getInfoCompetence($request);
 
         $upload_dir = $this->container->getParameter('upload_dir');
 
-        $logo = $competence["logo"]->getClientOriginalName();
-        $competence["logo"]->move($upload_dir, $logo);
+        $name = $competence["logo"]->getClientOriginalName();
+        $competence["logo"]->move($upload_dir, $name);
 
+        $logo = $upload_dir . "/" . $name;
         $em = $this->getDoctrine()->getManager();
 
         $new_competence = new Competence($competence["competence"], $logo, $competence["niveau"], $id_user);

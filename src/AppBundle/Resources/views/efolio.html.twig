@@ -10,20 +10,17 @@
 {% endblock %}
 
 {% block content %}
-
-
-
     <div class="panel" id="formation">
         <h1><i class="fa fa-graduation-cap"></i> Formations</h1>
         <div class="panel-content">
             {% if formations == null %}
                 <p class="center">Aucune formation n'a été ajoutée.</p>
             {% else %}
-                {% for formation in formations %}
-                    {{ formation.getAnnees() }} - {{ formation.getFormation() }} - {{ formation.getEtablissement() }} ({{ formation.getVille() }})
+                {% for formation in formations | reverse %}
+                    <p class="formation">{{ formation.getAnnees() }} - {{ formation.getFormation() }} - {{ formation.getEtablissement() }}
+                        ({{ formation.getVille() }})</p>
 
                     {% if loop.last == false %}
-                        <br>
                         <hr>
                     {% endif %}
                 {% endfor %}
@@ -41,7 +38,7 @@
                     <th>Période</th>
                     <th>Experience</th>
                     <th>Entreprise</th>
-                    {% for experience in experiences %}
+                    {% for experience in experiences | reverse %}
                         <tr>
                             <td>{{ experience.getPeriode() }}</td>
                             <td>{{ experience.getExperience() }}</td>
@@ -60,13 +57,12 @@
                 <p class="center">Aucune compétence n'a été ajoutée.</p>
             {% else %}
                 {% for competence in competences %}
-                    <p>{{ competence.getCompetence() }} - {{ competence.getNiveau() }}</p>
-
-                    {% if loop.last == false %}
-                        <br>
-                        <hr>
-                        <br>
-                    {% endif %}
+                    <div class="competence">
+                        <img src="{{ asset(competence.getLogo()) }}" alt="{{ competence.getCompetence() }}"
+                             width="100"/>
+                        <p class="competence-titre">{{ competence.getCompetence() }}</p>
+                        <p class="competence-niveau">{{ competence.getNiveau() }}</p>
+                    </div>
                 {% endfor %}
             {% endif %}
         </div>
@@ -135,15 +131,15 @@
     <div class="panel" id="contact">
         <h1><i class="fa fa-envelope"></i> Contact</h1>
         <div class="panel-content">
-            <form action="" method="post">
+            <form action="{{ path("contact_me") }}" method="post">
                 <div class="form-row">
                     {{ form_label(contact.email) }}
                     {{ form_widget(contact.email) }}
                 </div>
 
                 <div class="form-row">
-                    {{ form_label(contact.titre) }}
-                    {{ form_widget(contact.titre) }}
+                    {{ form_label(contact.objet) }}
+                    {{ form_widget(contact.objet) }}
                 </div>
 
                 <div class="form-row">

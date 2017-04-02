@@ -1,0 +1,36 @@
+{% extends "baseAdmin.html.twig" %}
+
+{% block title %}Informations Personnelles{% endblock %}
+
+{% block top_title %}Informations Personnelles{% endblock %}
+
+{% block content %}
+    <div class="panel">
+        <h1></h1>
+
+        <div class="panel-content">
+            <form action="#" method="post">
+                <div class="form-row">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" id="nom" value="{{ user.get("nom") }}"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" name="prenom" id="prenom" value="{{ user.get("prenom") }}"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="dateNaissance">Date de Naissance</label>
+                    <input type="text" name="dateNaissance" id="dateNaissance" value="{{ user.get("dateNaissance") }}"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="permis">Permis</label>
+                    <label class="label-radio"><input type="radio" value="true" name="permis" {% if user.get("permis") == true %} checked {% endif %}>Oui</label>
+                    <label class="label-radio"><input type="radio" value="false" name="permis" {% if user.get("permis") == false %} checked {% endif %}>Non</label>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
