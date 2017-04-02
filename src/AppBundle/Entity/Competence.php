@@ -35,28 +35,21 @@ class Competence
     private $logo;
 
     /**
-     * @ORM\Column(name="niveau", type="text")
+     * @ORM\Column(name="idUser", type="integer")
      */
-    private $niveau;
-
-    /**
-     * @ORM\Column(name="id_user", type="integer")
-     */
-    private $id_user;
+    private $idUser;
 
     /**
      * Competence constructor.
      * @param $competence
      * @param $logo
-     * @param $niveau
-     * @param $id_user
+     * @param $idUser
      */
-    public function __construct($competence, $logo, $niveau, $id_user)
+    public function __construct($competence, $logo, $idUser)
     {
         $this->competence = $competence;
         $this->logo = $logo;
-        $this->niveau = $niveau;
-        $this->id_user = $id_user;
+        $this->idUser = $idUser;
     }
 
 
@@ -120,30 +113,6 @@ class Competence
     }
 
     /**
-     * Set niveau
-     *
-     * @param string $niveau
-     *
-     * @return Competence
-     */
-    public function setNiveau($niveau)
-    {
-        $this->niveau = $niveau;
-
-        return $this;
-    }
-
-    /**
-     * Get niveau
-     *
-     * @return string
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
-
-    /**
      * Set idUser
      *
      * @param integer $idUser
@@ -152,7 +121,7 @@ class Competence
      */
     public function setIdUser($idUser)
     {
-        $this->id_user = $idUser;
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -164,6 +133,6 @@ class Competence
      */
     public function getIdUser()
     {
-        return $this->id_user;
+        return $this->idUser;
     }
 }

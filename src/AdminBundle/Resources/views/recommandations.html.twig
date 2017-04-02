@@ -1,9 +1,8 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block top_title %}Recommandations{% endblock %}
+{% block top_title %}<h1>Recommandations</h1>{% endblock %}
 
 {% block content %}
-
     {% if recommandations != null %}
         <div class="panel">
             <h1><i class="fa fa-edit"></i> Modifier mes recommandations</h1>
@@ -15,18 +14,21 @@
 
                         <div class="form-row">
                             <label for="personne">Personne</label>
-                            <input type="text" name="personne" size="50" value="{{ recommandation.getPersonne() }}"/>
+                            <input type="text" name="personne" id="personne" value="{{ recommandation.getPersonne() }}"
+                                   required/>
                         </div>
 
                         <div class="form-row">
                             <label for="entreprise">Entreprise</label>
-                            <input type="text" name="entreprise" size="50" value="{{ recommandation.getEntreprise() }}">
+                            <input type="text" name="entreprise" id="entreprise"
+                                   value="{{ recommandation.getEntreprise() }}" required/>
                         </div>
 
                         <div class="form-row">
                             <label for="recommandation">Recommandation </label>
-                        <textarea name="recommandation" rows="5"
-                                  cols="50">{{ recommandation.getRecommandation() }}</textarea>
+                            <textarea name="recommandation" id="recommandation" rows="5" cols="50" required>
+                                {{ recommandation.getRecommandation() }}
+                            </textarea>
                         </div>
 
                         <div class="form-submit">
@@ -50,17 +52,17 @@
             <form action="{{ path('add_recommandation') }}" method="POST">
                 <div class="form-row">
                     <label for="personne">Personne</label>
-                    <input type="text" name="personne" size="50"/>
+                    <input type="text" name="personne" id="personne" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="entreprise">Entreprise</label>
-                    <input name="entreprise" size="50">
+                    <input name="entreprise" id="entreprise" required/>
                 </div>
 
                 <div class="form-row">
-                    <label for="recommandation">Recommandation </label>
-                    <textarea name="recommandation" rows="5" cols="50"></textarea>
+                    <label for="recommandation">Recommandation</label>
+                    <textarea name="recommandation" id="recommandation" rows="5" cols="50" required></textarea>
                 </div>
 
                 <div class="form-submit">

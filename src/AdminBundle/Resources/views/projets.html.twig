@@ -1,8 +1,6 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Efolio - Admin{% endblock %}
-
-{% block top_title %}Projets{% endblock %}
+{% block top_title %}<h1>Projets</h1>{% endblock %}
 
 {% block content %}
 
@@ -17,18 +15,19 @@
 
                         <div class="form-row">
                             <label for="annee">Année</label>
-                            <input type="text" name="annee" size="10"
-                                   value="{{ projet.getAnnee() }}"/>
+                            <input type="text" name="annee" id="annee"
+                                   value="{{ projet.getAnnee() }}" required/>
                         </div>
 
                         <div class="form-row">
                             <label for="projet">Projet </label>
-                            <input type="text" name="projet" size="50" value="{{ projet.getProjet() }}"/>
+                            <input type="text" name="projet" id="projet" value="{{ projet.getProjet() }}" required/>
                         </div>
 
                         <div class="form-row">
                             <label for="description">Description</label>
-                            <textarea name="description" rows="5" cols="50">{{ projet.getDescription() }}</textarea>
+                            <textarea name="description" id="description" rows="5" cols="50"
+                                      required>{{ projet.getDescription() }}</textarea>
                         </div>
 
                         <div class="form-submit">
@@ -52,17 +51,17 @@
             <form action="{{ path('add_projet') }}" method="POST">
                 <div class="form-row">
                     <label for="annee">Année</label>
-                    <input type="text" name="annee" size="10"/>
+                    <input type="text" name="annee" id="annee" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="projet">Projet </label>
-                    <input type="text" name="projet" size="50"/>
+                    <input type="text" name="projet" id="projet" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="description">Description</label>
-                    <textarea name="description" rows="5" cols="50"></textarea>
+                    <textarea name="description" id="description" rows="5" cols="50" required></textarea>
                 </div>
 
                 <div class="form-submit">

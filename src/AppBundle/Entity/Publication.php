@@ -22,12 +22,12 @@ class Publication
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @ORM\Column(name="id_user", type="integer")
+     * @ORM\Column(name="idUser", type="integer")
      */
-    private $id_user;
+    private $idUser;
 
     /**
      * @ORM\Column(name="titre", type="text")
@@ -40,11 +40,11 @@ class Publication
      */
     private $publication;
 
-    public function __construct($titre, $publication, $id_user)
+    public function __construct($titre, $publication, $idUser)
     {
         $this->titre = $titre;
         $this->publication = $publication;
-        $this->id_user = $id_user;
+        $this->idUser = $idUser;
     }
 
     /**
@@ -66,7 +66,7 @@ class Publication
      */
     public function setIdUser($idUser)
     {
-        $this->id_user = $idUser;
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -78,7 +78,7 @@ class Publication
      */
     public function getIdUser()
     {
-        return $this->id_user;
+        return $this->idUser;
     }
 
     /**

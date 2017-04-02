@@ -21,7 +21,7 @@ class User
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(name="nom", type="text")
@@ -44,9 +44,9 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(name="date_naissance", type="text")
+     * @ORM\Column(name="dateNaissance", type="text")
      */
-    private $date_naissance;
+    private $dateNaissance;
 
     /**
      * @ORM\Column(name="permis", type="boolean")
@@ -113,27 +113,27 @@ class User
     }
 
     /**
-     * Set date_naissance
+     * Set dateNaissance
      *
-     * @param int $date_naissance
+     * @param int $dateNaissance
      *
      * @return User
      */
-    public function setDateNaissance($date_naissance)
+    public function setDateNaissance($dateNaissance)
     {
-        $this->date_naissance = $date_naissance;
+        $this->dateNaissance = $dateNaissance;
 
         return $this;
     }
 
     /**
-     * Get date_naissance
+     * Get dateNaissance
      *
      * @return int
      */
     public function getDateNaissance()
     {
-        return $this->date_naissance;
+        return $this->dateNaissance;
     }
 
     /**
@@ -207,5 +207,17 @@ class User
     public function getPermis()
     {
         return $this->permis;
+    }
+
+
+
+    public function getAge()
+    {
+        $naissance = explode('/', $this->dateNaissance);
+        $auj = explode('/', date('d/m/Y'));
+
+        $age = $auj[2] - $naissance[2] - 1;
+
+        return $age . " ans";
     }
 }

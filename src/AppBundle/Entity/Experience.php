@@ -22,7 +22,7 @@ class Experience
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(name="experience", type="text")
@@ -40,23 +40,23 @@ class Experience
     private $entreprise;
 
     /**
-     * @ORM\Column(name="id_user", type="integer")
+     * @ORM\Column(name="idUser", type="integer")
      */
-    private $id_user;
+    private $idUser;
 
     /**
      * Experience constructor.
      * @param $experience
      * @param $periode
      * @param $entreprise
-     * @param $id_user
+     * @param $idUser
      */
-    public function __construct($experience, $periode, $entreprise, $id_user)
+    public function __construct($experience, $periode, $entreprise, $idUser)
     {
         $this->experience = $experience;
         $this->periode = $periode;
         $this->entreprise = $entreprise;
-        $this->id_user = $id_user;
+        $this->idUser = $idUser;
     }
 
     /**
@@ -150,7 +150,7 @@ class Experience
      */
     public function setIdUser($idUser)
     {
-        $this->id_user = $idUser;
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -162,6 +162,6 @@ class Experience
      */
     public function getIdUser()
     {
-        return $this->id_user;
+        return $this->idUser;
     }
 }

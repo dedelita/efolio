@@ -16,17 +16,6 @@ class UserController extends Controller
         return $this->render("AdminBundle::informationsPersonnelles.html.twig", array("user" => $session));
     }
 
-    public function age($date)
-    {
-        $naissance = explode('/', $date);
-        $auj = explode('/', date('d/m/Y'));
-
-        if(($naissance[1] < $auj[1]) || (($naissance[1] == $auj[1]) && ($naissance[0] <= $auj[0])))
-            return $auj[2] - $naissance[2];
-
-        return $auj[2] - $naissance[2] - 1;
-    }
-
     public function connexionAction(Request $request)
     {
         $erreur = null;
@@ -51,8 +40,8 @@ class UserController extends Controller
                     $session->set("nom", $user->getNom());
                     $session->set("prenom", $user->getPrenom());
                     $session->set("dateNaissance", $date_naissance);
-                    $session->set("age", $this->age($date_naissance));
                     $session->set("permis", $user->getPermis());
+                    $session->set("email", $user->getEmail());
 
                    return $this->redirect($this->generateUrl('admin_formations'));
                 } else

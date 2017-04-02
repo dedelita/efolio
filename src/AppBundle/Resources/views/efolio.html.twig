@@ -3,7 +3,8 @@
 {% block title %}My e-portfolio{% endblock %}
 
 {% block top_title %}
-    Delphine Martinez Parra
+    <h1>EPortfolio de {{ user.getPrenom() }} {{ user.getNom() }}</h1>
+    <p>{{ user.getDateNaissance() }} ({{ user.getAge() }})</p>
     <div class="right small-text">
         <a href="{{ path("admin_connexion") }}"><i class="fa fa-sign-in"></i> Administration - Connexion</a>
     </div>
@@ -14,15 +15,17 @@
         <h1><i class="fa fa-graduation-cap"></i> Formations</h1>
         <div class="panel-content">
             {% if formations == null %}
-                <p class="center">Aucune formation n'a été ajoutée.</p>
+                <p>Aucune formation n'a été ajoutée.</p>
             {% else %}
                 {% for formation in formations | reverse %}
-                    <p class="formation">{{ formation.getAnnees() }} - {{ formation.getFormation() }} - {{ formation.getEtablissement() }}
-                        ({{ formation.getVille() }})</p>
-
-                    {% if loop.last == false %}
-                        <hr>
-                    {% endif %}
+                    <div class="formation">
+                        <p>{{ formation.getAnnees() }} - {{ formation.getFormation() }}
+                            - {{ formation.getEtablissement() }}
+                            ({{ formation.getVille() }})</p>
+                        {% if loop.last == false %}
+                            <hr>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             {% endif %}
         </div>
@@ -32,7 +35,7 @@
         <h1><i class="fa fa-briefcase"></i> Expériences</h1>
         <div class="panel-content">
             {% if experiences == null %}
-                <p class="center">Aucune expérience n'a été ajoutée.</p>
+                <p>Aucune expérience n'a été ajoutée.</p>
             {% else %}
                 <table>
                     <th>Période</th>
@@ -54,14 +57,13 @@
         <h1><i class="fa fa-cogs"></i> Compétences</h1>
         <div class="panel-content">
             {% if competences == null %}
-                <p class="center">Aucune compétence n'a été ajoutée.</p>
+                <p>Aucune compétence n'a été ajoutée.</p>
             {% else %}
                 {% for competence in competences %}
                     <div class="competence">
                         <img src="{{ asset(competence.getLogo()) }}" alt="{{ competence.getCompetence() }}"
                              width="100"/>
-                        <p class="competence-titre">{{ competence.getCompetence() }}</p>
-                        <p class="competence-niveau">{{ competence.getNiveau() }}</p>
+                        <p>{{ competence.getCompetence() }}</p>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -69,19 +71,19 @@
     </div>
 
     <div class="panel" id="projet">
-        <h1><i class="fa fa-folder-open"></i> Projets Réalisés</h1>
+        <h1><i class="fa fa-folder"></i> Projets Réalisés</h1>
         <div class="panel-content">
             {% if projets == null %}
-                <p class="center">Aucun projet n'a été ajouté.</p>
+                <p>Aucun projet n'a été ajouté.</p>
             {% else %}
                 {% for projet in projets %}
-                    <p>{{ projet.getProjet() }} - {{ projet.getDescription() }}</p>
+                    <div class="projet">
+                        <p>{{ projet.getProjet() }} - {{ projet.getDescription() }}</p>
 
-                    {% if loop.last == false %}
-                        <br>
-                        <hr>
-                        <br>
-                    {% endif %}
+                        {% if loop.last == false %}
+                            <hr>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             {% endif %}
         </div>
@@ -91,18 +93,18 @@
         <h1><i class="fa fa-bullhorn"></i> Recommandations</h1>
         <div class="panel-content">
             {% if recommandations == null %}
-                <p class="center">Aucune recommandation n'a été ajoutée.</p>
+                <p>Aucune recommandation n'a été ajoutée.</p>
             {% else %}
                 {% for recommandation in recommandations %}
-                    <p>{{ recommandation.getPersonne() }}</p>
-                    <p>{{ recommandation.getEntreprise() }}</p>
-                    <p>{{ recommandation.getRecommandation() }}</p>
+                    <div class="recommandation">
+                        <p>{{ recommandation.getPersonne() }}</p>
+                        <p>{{ recommandation.getEntreprise() }}</p>
+                        <p>{{ recommandation.getRecommandation() }}</p>
 
-                    {% if loop.last == false %}
-                        <br>
-                        <hr>
-                        <br>
-                    {% endif %}
+                        {% if loop.last == false %}
+                            <hr>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             {% endif %}
         </div>
@@ -112,17 +114,17 @@
         <h1><i class="fa fa-quote-left"></i> Publications</h1>
         <div class="panel-content">
             {% if publications == null %}
-                <p class="center">Aucune publication n'a été ajoutée.</p>
+                <p>Aucune publication n'a été ajoutée.</p>
             {% else %}
                 {% for publication in publications %}
-                    <p>{{ publication.getTitre() }}</p>
-                    <p>{{ publication.getPublication() }}</p>
+                    <div class="publication">
+                        <p>{{ publication.getTitre() }}</p>
+                        <p>{{ publication.getPublication() }}</p>
 
-                    {% if loop.last == false %}
-                        <br>
-                        <hr>
-                        <br>
-                    {% endif %}
+                        {% if loop.last == false %}
+                            <hr>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             {% endif %}
         </div>

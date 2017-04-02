@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="formation")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\FormationRepository")
  *
  */
 class Formation
@@ -39,9 +38,9 @@ class Formation
     private $ville;
 
     /**
-     * @ORM\Column(name="id_user", type="integer")
+     * @ORM\Column(name="idUser", type="integer")
      */
-    private $id_user;
+    private $idUser;
 
     /**
      * Formation constructor.
@@ -49,15 +48,15 @@ class Formation
      * @param $annees
      * @param $etablissement
      * @param $ville
-     * @param $id_user
+     * @param $idUser
      */
-    public function __construct($formation, $annees, $etablissement, $ville, $id_user)
+    public function __construct($formation, $annees, $etablissement, $ville, $idUser)
     {
         $this->formation = $formation;
         $this->annees = $annees;
         $this->etablissement = $etablissement;
         $this->ville = $ville;
-        $this->id_user = $id_user;
+        $this->idUser = $idUser;
     }
 
     /**
@@ -175,7 +174,7 @@ class Formation
      */
     public function setIdUser($idUser)
     {
-        $this->id_user = $idUser;
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -187,6 +186,6 @@ class Formation
      */
     public function getIdUser()
     {
-        return $this->id_user;
+        return $this->idUser;
     }
 }

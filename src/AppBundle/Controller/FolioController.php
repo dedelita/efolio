@@ -15,7 +15,7 @@ class FolioController extends Controller
     //Formations
     public function getFormationsAction() {
         $formationRepo = $this->getDoctrine()->getRepository('AppBundle:Formation');
-        $formations = $formationRepo->findAll();
+        $formations = $formationRepo->findByIdUser(1);
 
         return new Response(serialize($formations));
     }
@@ -28,7 +28,7 @@ class FolioController extends Controller
     //Experiences
     public function getExperiencesAction() {
         $experienceRepo = $this->getDoctrine()->getRepository('AppBundle:Experience');
-        $experiences = $experienceRepo->findAll();
+        $experiences = $experienceRepo->findByIdUser(1);
 
         return new Response(serialize($experiences));
     }
@@ -41,7 +41,7 @@ class FolioController extends Controller
     //Competences
     public function getCompetencesAction() {
         $competenceRepo = $this->getDoctrine()->getRepository('AppBundle:Competence');
-        $competences = $competenceRepo->findAll();
+        $competences = $competenceRepo->findByIdUser(1);
 
         return new Response(serialize($competences));
     }
@@ -54,7 +54,7 @@ class FolioController extends Controller
     //Projets
     public function getProjetsAction() {
         $projetRepo = $this->getDoctrine()->getRepository('AppBundle:Projet');
-        $projets = $projetRepo->findAll();
+        $projets = $projetRepo->findByIdUser(1);
 
         return new Response(serialize($projets));
     }
@@ -67,7 +67,7 @@ class FolioController extends Controller
     //Recommandation
     public function getRecommandationsAction() {
         $recommandationRepo = $this->getDoctrine()->getRepository('AppBundle:Recommandation');
-        $recommandations = $recommandationRepo->findAll();
+        $recommandations = $recommandationRepo->findByIdUser(1);
 
         return new Response(serialize($recommandations));
     }
@@ -80,7 +80,7 @@ class FolioController extends Controller
     //Publications
     public function getPublicationsAction() {
         $publicationRepo = $this->getDoctrine()->getRepository('AppBundle:Publication');
-        $publications = $publicationRepo->findAll();
+        $publications = $publicationRepo->findByIdUser(1);
 
         return new Response(serialize($publications));
     }
@@ -89,8 +89,8 @@ class FolioController extends Controller
         return unserialize($this->getPublicationsAction()->getContent());
     }
 
-
-    public function getContact()
+    //Contact
+    public function getFormContact()
     {
         $form = $this->createFormBuilder()
             ->add('email', EmailType::class, array('label' => "Votre adresse mail"))
@@ -118,6 +118,12 @@ class FolioController extends Controller
         return $this->getEfolioAction();
     }
 
+    private function getUserInfo() {
+        $userRepo = $this->getDoctrine()->getRepository('AppBundle:User');
+        return $userRepo->find(1);
+
+    }
+
     //EFolio
     public function getEfolioAction() {
         $formations = $this->getFormations();
@@ -126,8 +132,9 @@ class FolioController extends Controller
         $projets = $this->getProjets();
         $recommandations = $this->getRecommandations();
         $publications = $this->getPublications();
-        $contact = $this->getContact();
-
+        $contact = $this->getFormContact();
+        $user = $this->getUserInfo();
+        
         return $this->render('AppBundle::efolio.html.twig',
             array('formations' => $formations,
                 'experiences' => $experiences,
@@ -135,6 +142,7 @@ class FolioController extends Controller
                 'publications' => $publications,
                 'projets' => $projets,
                 'recommandations' => $recommandations,
-                'contact' => $contact));
+                'contact' => $contact,
+                'user' => $user));
     }
 }

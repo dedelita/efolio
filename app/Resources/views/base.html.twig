@@ -14,7 +14,7 @@
 <body>
 {% block body %}
     <header id="top">
-        <h1>{% block top_title %}{% endblock %}</h1>
+        {% block top_title %}{% endblock %}
     </header>
 
     <div id="box">
@@ -28,7 +28,7 @@
                         |
                         <li><a href="#competence"><i class="fa fa-cogs"></i> Compétences</a></li>
                         |
-                        <li><a href="#projet"><i class="fa fa-folder-open"></i> Projets</a></li>
+                        <li><a href="#projet"><i class="fa fa-folder"></i> Projets</a></li>
                         |
                         <li><a href="#recommandation"><i class="fa fa-bullhorn"></i> Recommandations</a></li>
                         |

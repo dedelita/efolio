@@ -22,12 +22,12 @@ class Projet
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @ORM\Column(name="id_user", type="integer")
+     * @ORM\Column(name="idUser", type="integer")
      */
-    private $id_user;
+    private $idUser;
 
     /**
      * @ORM\Column(name="projet", type="text")
@@ -44,12 +44,12 @@ class Projet
      */
     private $annee;
 
-    public function __construct($projet, $annee, $description, $id_user)
+    public function __construct($projet, $annee, $description, $idUser)
     {
         $this->projet = $projet;
         $this->description = $description;
         $this->annee = $annee;
-        $this->id_user = $id_user;
+        $this->idUser = $idUser;
     }
 
     /**
@@ -71,7 +71,7 @@ class Projet
      */
     public function setIdUser($idUser)
     {
-        $this->id_user = $idUser;
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -83,7 +83,7 @@ class Projet
      */
     public function getIdUser()
     {
-        return $this->id_user;
+        return $this->idUser;
     }
 
     /**

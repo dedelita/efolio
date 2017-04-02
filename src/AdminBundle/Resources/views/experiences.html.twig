@@ -1,6 +1,6 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block top_title %}Expériences{% endblock %}
+{% block top_title %}<h1>Expériences</h1>{% endblock %}
 
 {% block content %}
 
@@ -11,21 +11,24 @@
             <div class="panel-content">
                 {% for experience in experiences %}
                     <form action="{{ path("set_experience") }}" method="post">
-                        <input type="number" name="id" hidden value="{{ experience.getId() }}">
+                        <input type="number" name="id" hidden value="{{ experience.getId() }}"/>
 
                         <div class="form-row">
                             <label for="periode">Période</label>
-                            <input type="text" name="periode" size="50" value="{{ experience.getPeriode() }}"/>
+                            <input type="text" name="periode" id="periode" value="{{ experience.getPeriode() }}"
+                                   required/>
                         </div>
 
                         <div class="form-row">
                             <label for="experience">Expérience </label>
-                            <input type="text" name="experience" size="50" value="{{ experience.getExperience() }}"/>
+                            <input type="text" name="experience" id="experience"
+                                   value="{{ experience.getExperience() }}" required/>
                         </div>
 
                         <div class="form-row">
                             <label for="entreprise">Entreprise </label>
-                            <input type="text" name="entreprise" size="50" value="{{ experience.getEntreprise() }}"/>
+                            <input type="text" name="entreprise" id="entreprise"
+                                   value="{{ experience.getEntreprise() }}" required/>
                         </div>
 
                         <div class="form-submit">
@@ -49,17 +52,17 @@
             <form action="{{ path('add_experience') }}" method="POST">
                 <div class="form-row">
                     <label for="periode">Période</label>
-                    <input type="text" name="periode" size="50"/>
+                    <input type="text" name="periode" id="periode" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="experience">Expérience </label>
-                    <input type="text" name="experience" size="50"/>
+                    <input type="text" name="experience" id="experience" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="entreprise">Entreprise </label>
-                    <input type="text" name="entreprise" size="50"/>
+                    <input type="text" name="entreprise" id="entreprise" required/>
                 </div>
 
                 <div class="form-submit">

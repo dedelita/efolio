@@ -1,6 +1,6 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block top_title %}Formations{% endblock %}
+{% block top_title %}<h1>Formations</h1>{% endblock %}
 
 {% block content %}
 
@@ -15,24 +15,25 @@
 
                         <div class="form-row">
                             <label for="annees">Années</label>
-                            <input type="text" name="annees" placeholder="XXXX/XXXX"
-                                   value="{{ formation.getAnnees() }}"/>
+                            <input type="text" name="annees" id="annees"
+                                   value="{{ formation.getAnnees() }}" required/>
                         </div>
 
                         <div class="form-row">
                             <label for="formation">Formation </label>
-                            <input type="text" name="formation" value="{{ formation.getFormation() }}"/>
+                            <input type="text" name="formation" id="formation" value="{{ formation.getFormation() }}"
+                                   required/>
                         </div>
 
                         <div class="form-row">
                             <label for="etablissement">Etablissement</label>
-                            <input type="text" name="etablissement"
-                                   value="{{ formation.getEtablissement() }}"/>
+                            <input type="text" name="etablissement" id="etablissement"
+                                   value="{{ formation.getEtablissement() }}" required/>
                         </div>
 
                         <div class="form-row">
                             <label for="ville">Ville</label>
-                            <input type="text" name="ville" value="{{ formation.getVille() }}"/>
+                            <input type="text" name="ville" id="ville" value="{{ formation.getVille() }}" required/>
                         </div>
 
                         <div class="form-submit">
@@ -56,22 +57,22 @@
             <form action="{{ path('add_formation') }}" method="POST">
                 <div class="form-row">
                     <label for="annees">Années</label>
-                    <input type="text" name="annees"/>
+                    <input type="text" name="annees" id="annees" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="formation">Formation </label>
-                    <input type="text" name="formation"/>
+                    <input type="text" name="formation" id="formation" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="etablissement">Etablissement</label>
-                    <input type="text" name="etablissement"/>
+                    <input type="text" name="etablissement" id="etablissement" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="ville">Ville</label>
-                    <input type="text" name="ville"/>
+                    <input type="text" name="ville" id="ville" required/>
                 </div>
 
                 <div class="form-submit">

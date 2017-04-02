@@ -1,6 +1,6 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block top_title %}Compétences{% endblock %}
+{% block top_title %}<h1>Compétences</h1>{% endblock %}
 
 {% block content %}
 
@@ -10,24 +10,19 @@
 
             <div class="panel-content">
                 {% for competence in competences %}
+                    <img src="{{ asset(competence.getLogo()) }}" alt="{{ competence.getCompetence() }}" width="100"/>
                     <form action="{{ path("set_competence") }}" method="post" enctype="multipart/form-data">
                         <input type="number" name="id" hidden value="{{ competence.getId() }}">
 
                         <div class="form-row">
                             <label for="competence">Compétence</label>
-                            <input type="text" name="competence" size="50" value="{{ competence.getCompetence() }}"/>
+                            <input type="text" name="competence" id="competence" size="50"
+                                   value="{{ competence.getCompetence() }}" required/>
                         </div>
 
                         <div class="form-row">
                             <label for="logo">Logo</label>
                             <input type="file" name="logo"/>
-                        </div>
-
-                        <div class="form-row">
-                            <label for="niveau">Niveau</label>
-                            <input type='radio' name='niveau' value='Débutant'>Débutant
-                            <input type='radio' name='niveau' value='Confirmé'>Confirmé
-                            <input type='radio' name='niveau' value='Expert'>Expert
                         </div>
 
                         <div class="form-submit">
@@ -51,19 +46,12 @@
             <form action="{{ path('add_competence') }}" method="post" enctype="multipart/form-data">
                 <div class="form-row">
                     <label for="competence">Compétence</label>
-                    <input type="text" name="competence" size="50"/>
+                    <input type="text" name="competence" id="competence" required/>
                 </div>
 
                 <div class="form-row">
                     <label for="logo">Logo</label>
                     <input type="file" name="logo"/>
-                </div>
-
-                <div class="form-row">
-                    <label for="niveau">Niveau</label>
-                    <input type='radio' name='niveau' value='Débutant'>Débutant
-                    <input type='radio' name='niveau' value='Confirmé'>Confirmé
-                    <input type='radio' name='niveau' value='Expert'>Expert
                 </div>
 
                 <div class="form-submit">
