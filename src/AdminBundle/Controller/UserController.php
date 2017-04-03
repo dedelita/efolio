@@ -2,7 +2,6 @@
 
 namespace AdminBundle\Controller;
 
-use AppBundle\AppBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -33,13 +32,11 @@ class UserController extends Controller
 
                     if ($session->isStarted())
                         $session->start();
-
-                    $date_naissance = $user->getDateNaissance();
-
+                    
                     $session->set("id", $user->getId());
                     $session->set("nom", $user->getNom());
                     $session->set("prenom", $user->getPrenom());
-                    $session->set("dateNaissance", $date_naissance);
+                    $session->set("dateNaissance", $user->getDateNaissance());
                     $session->set("permis", $user->getPermis());
                     $session->set("email", $user->getEmail());
 

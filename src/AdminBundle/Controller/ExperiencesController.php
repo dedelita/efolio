@@ -19,12 +19,8 @@ class ExperiencesController extends Controller
     }
 
     private function getInfoExperience(Request $request) {
-        $id = $request->get("id");
-        $experience = $request->get('experience');
-        $periode = $request->get('periode');
-        $entreprise = $request->get('entreprise');
-
-        return array("id" => $id, "experience" => $experience, "periode" => $periode, "entreprise" => $entreprise);
+        return array("id" => $request->get("id"), "experience" => $request->get('experience'),
+            "periode" => $request->get('periode'), "entreprise" => $request->get('entreprise'));
     }
 
     public function setExperienceAction(Request $request)

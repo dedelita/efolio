@@ -18,13 +18,10 @@ class ProjetsController extends Controller
         return $this->render("AdminBundle::projets.html.twig", array("projets" => $projets));
     }
 
-    private function getInfoProjet(Request $request) {
-        $id = $request->get("id");
-        $projet = $request->get('projet');
-        $annee = $request->get('annee');
-        $description = $request->get('description');
-
-        return array("id" => $id, "projet" => $projet, "annee" => $annee, "description" => $description);
+    private function getInfoProjet(Request $request)
+    {
+        return array("id" => $request->get("id"), "projet" => $request->get('projet'),
+            "annee" => $request->get('annee'), "description" => $request->get('description'));
     }
 
     public function setProjetAction(Request $request)

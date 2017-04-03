@@ -19,12 +19,8 @@ class RecommandationsController extends Controller
     }
 
     private function getInfoRecommandation(Request $request) {
-        $id = $request->get("id");
-        $recommandation = $request->get('recommandation');
-        $entreprise = $request->get('entreprise');
-        $personne = $request->get('personne');
-
-        return array("id" => $id, "recommandation" => $recommandation, "entreprise" => $entreprise, "personne" => $personne);
+        return array("id" => $request->get("id"), "recommandation" => $request->get('recommandation'),
+            "entreprise" => $request->get('entreprise'), "personne" => $request->get('personne'));
     }
 
     public function setRecommandationAction(Request $request)
@@ -56,7 +52,6 @@ class RecommandationsController extends Controller
 
     public function addRecommandationAction(Request $request)
     {
-        $session = $request->getSession();
         $session = $request->getSession();
         $id_user = $session->get('id');
         $recommandation = $this->getInfoRecommandation($request);

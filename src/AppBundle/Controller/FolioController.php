@@ -20,7 +20,7 @@ class FolioController extends Controller
         return new Response(serialize($formations));
     }
 
-    private function getFormations() {
+    public function getFormations() {
         return unserialize($this->getFormationsAction()->getContent());
     }
 
@@ -33,7 +33,7 @@ class FolioController extends Controller
         return new Response(serialize($experiences));
     }
 
-    private function getExperiences() {
+    public function getExperiences() {
         return unserialize($this->getExperiencesAction()->getContent());
     }
 
@@ -46,7 +46,7 @@ class FolioController extends Controller
         return new Response(serialize($competences));
     }
 
-    private function getCompetences() {
+    public function getCompetences() {
         return unserialize($this->getCompetencesAction()->getContent());
     }
 
@@ -59,7 +59,7 @@ class FolioController extends Controller
         return new Response(serialize($projets));
     }
 
-    private function getProjets() {
+    public function getProjets() {
         return unserialize($this->getProjetsAction()->getContent());
     }
 
@@ -72,7 +72,7 @@ class FolioController extends Controller
         return new Response(serialize($recommandations));
     }
 
-    private function getRecommandations() {
+    public function getRecommandations() {
         return unserialize($this->getRecommandationsAction()->getContent());
     }
 
@@ -85,7 +85,7 @@ class FolioController extends Controller
         return new Response(serialize($publications));
     }
 
-    private function getPublications() {
+    public function getPublications() {
         return unserialize($this->getPublicationsAction()->getContent());
     }
 
@@ -95,7 +95,7 @@ class FolioController extends Controller
         $form = $this->createFormBuilder()
             ->add('email', EmailType::class, array('label' => "Votre adresse mail"))
             ->add('objet', TextType::class, array('label' => "Votre objet"))
-            ->add('msg', TextareaType::class, array('label' => false, 'attr' => array('rows' => 15, 'cols' => 75)))
+            ->add('msg', TextareaType::class, array('attr' => array('rows' => 15, 'cols' => 75)))
             ->add('Envoyer', SubmitType::class)
             ->getForm();
 
@@ -104,12 +104,14 @@ class FolioController extends Controller
 
     public function sendMailAction(Request $request)
     {
+        $session = $request->getSession();
+        $to = $session->get("email");
+
         $form = $request->get("form");
-        $to = "delphine.martinezparra@gmail.com";
 
         $message = \Swift_Message::newInstance()
-            ->setSubject($form["objet"])
-            ->setFrom($form["email"])
+            ->setSubject("[EPortfolio] " . $form["objet"])
+            ->setFrom(array('mp.dedelita@gmail.com' => $form["email"]))
             ->setTo($to)
             ->setBody($form["msg"]);
 
@@ -118,7 +120,7 @@ class FolioController extends Controller
         return $this->getEfolioAction();
     }
 
-    private function getUserInfo() {
+    public function getUserInfo() {
         $userRepo = $this->getDoctrine()->getRepository('AppBundle:User');
         return $userRepo->find(1);
 

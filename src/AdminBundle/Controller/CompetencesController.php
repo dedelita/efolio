@@ -18,11 +18,7 @@ class CompetencesController extends Controller
 
     private function getInfoCompetence(Request $request)
     {
-        $id = $request->get("id");
-        $competence = $request->get('competence');
-        $logo = $request->files->get("logo");
-
-        return array("id" => $id, "competence" => $competence, "logo" => $logo);
+        return array("id" => $request->get("id"), "competence" => $request->get('competence'), "logo" => $request->files->get("logo"));
     }
 
     public function setCompetenceAction(Request $request)

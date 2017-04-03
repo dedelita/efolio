@@ -19,11 +19,8 @@ class PublicationsController extends Controller
     }
 
     private function getInfoPublication(Request $request) {
-        $id = $request->get("id");
-        $titre = $request->get('titre');
-        $publication = $request->get('publication');
-
-        return array("id" => $id, "titre" => $titre, "publication" => $publication);
+        return array("id" => $request->get("id"), "titre" => $request->get('titre'),
+            "publication" => $request->get('publication'));
     }
 
     public function setPublicationAction(Request $request)

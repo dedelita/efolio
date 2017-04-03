@@ -1,8 +1,3 @@
-/* --------------------- FONT --------------------- */
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-@import url('https://fonts.googleapis.com/css?family=Oswald');
-@import url('https://fonts.googleapis.com/css?family=Arimo');
-
 /* --------------------- GENERAL --------------------- */
 body {
     display: flex;
@@ -80,10 +75,12 @@ form {
 
 /* --------------------- BUTTON --------------------- */
 button, input[type="submit"] {
-    border: transparent;
+    border: 2px outset #ffb3b3;
     border-radius: 5px;
     width: 90px;
     height: 25px;
+    color: #b30000;
+    background-color: #ffcccc;
 }
 
 /* --------------------- POSITION DIV --------------------- */
@@ -115,17 +112,6 @@ button, input[type="submit"] {
     text-align: center;
 }
 
-/* --------------------- COMPETENCE --------------------- */
-.competence {
-    display: inline-block;
-    text-align: center;
-    margin: auto 20px;
-}
-
-.competence > p {
-    font-weight: bold;
-}
-
 /* --------------------- PANEL --------------------- */
 .panel {
     width: 80%;
@@ -147,15 +133,25 @@ button, input[type="submit"] {
     padding: 15px;
 }
 
-
+/* --------------------- ELEMENTS DU PORTFOLIO --------------------- */
 .formation, .projet, .publication, .recommandation {
     width: 90%;
     text-align: justify;
     margin: auto;
 }
 
-.formation p {
+.formation p, .projet p {
     padding-left: 3%;
+}
+
+.competence {
+    display: inline-block;
+    text-align: center;
+    margin: auto 20px;
+}
+
+.competence > p {
+    font-weight: bold;
 }
 
 /* --------------------- TEXTE --------------------- */
@@ -170,6 +166,7 @@ button, input[type="submit"] {
 .small-text {
     font-size: medium;
 }
+
 /* --------------------- TABLE --------------------- */
 table {
     margin: auto;

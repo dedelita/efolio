@@ -2,15 +2,9 @@
 
 namespace AdminBundle\Controller;
 
-use AppBundle\Entity\Publication;
-use AppBundle\Entity\Recommandation;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Formation;
-use AppBundle\Entity\Competence;
-use AppBundle\Entity\Experience;
 
 class FormationsController extends Controller
 {
@@ -23,13 +17,9 @@ class FormationsController extends Controller
     }
 
     private function getInfoFormation(Request $request) {
-        $id = $request->get("id");
-        $formation = $request->get('formation');
-        $annees = $request->get('annees');
-        $etablissement = $request->get('etablissement');
-        $ville = $request->get('ville');
-
-        return array("id" => $id, "formation" => $formation, "annees" => $annees, "etablissement" => $etablissement, "ville" => $ville);
+        return array("id" => $request->get("id"), "formation" => $request->get('formation'),
+            "annees" => $request->get('annees'), "etablissement" => $request->get('etablissement'),
+            "ville" => $request->get('ville'));
     }
 
     public function setFormationAction(Request $request)
