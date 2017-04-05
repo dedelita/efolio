@@ -99,5 +99,5 @@ admin_info:
     path: /admin/informations_personnelles/
 
 set_info:
-    defaults : { _controller: AdminBundle:User:setInfo }
+    defaults: { _controller: AdminBundle:User:setInfo }
     path: /admin/informations_personnelles/modified

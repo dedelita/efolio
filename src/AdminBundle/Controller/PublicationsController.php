@@ -14,7 +14,7 @@ class PublicationsController extends Controller
     {
         $session = $request->getSession();
         $publications = $session->get("publications");
-        $publications = unserialize($publications->getContent());
+        $publications = unserialize($publications);
 
         return $this->render("AdminBundle::publications.html.twig", array("publications" => $publications));
     }
@@ -46,6 +46,8 @@ class PublicationsController extends Controller
             $em->flush();
         }
 
+        $this->updatePublications($request);
+        
         return $this->redirect($this->generateUrl("admin_publications"));
     }
 
@@ -62,7 +64,16 @@ class PublicationsController extends Controller
         $em->persist($new_publication);
         $em->flush();
 
+        $this->updatePublications($request);
+
         return $this->redirect($this->generateUrl("admin_publications"));
     }
 
+    private function updatePublications(Request $request)
+    {
+        $session = $request->getSession();
+        $publications = $this->forward('AppBundle:Folio:getPublications', array("idUser" => $session->get("id")));
+
+        $session->set("publications", $publications->getContent());
+    }
 }

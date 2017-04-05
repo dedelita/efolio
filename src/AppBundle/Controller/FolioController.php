@@ -115,7 +115,7 @@ class FolioController extends Controller
             ->setFrom(array('mp.dedelita@gmail.com' => $form["email"]))
             ->setTo($to)
             ->setBody($form["msg"]);
-
+        
         $this->get("mailer")->send($message);
 
         return  $this->redirect($this->generateUrl('efolio', ['_fragment' => 'contact']));

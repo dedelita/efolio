@@ -14,12 +14,13 @@ class RecommandationsController extends Controller
     {
         $session = $request->getSession();
         $recommandations = $session->get("recommandations");
-        $recommandations = unserialize($recommandations->getContent());
+        $recommandations = unserialize($recommandations);
 
         return $this->render("AdminBundle::recommandations.html.twig", array("recommandations" => $recommandations));
     }
 
-    private function getInfoRecommandation(Request $request) {
+    private function getInfoRecommandation(Request $request)
+    {
         return array("id" => $request->get("id"), "recommandation" => $request->get('recommandation'),
             "entreprise" => $request->get('entreprise'), "personne" => $request->get('personne'));
     }
@@ -48,6 +49,8 @@ class RecommandationsController extends Controller
             $em->flush();
         }
 
+        $this->updateRecommandations($request);
+
         return $this->redirect($this->generateUrl("admin_recommandations"));
     }
 
@@ -59,12 +62,21 @@ class RecommandationsController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $new_recommandation = new Recommandation( $recommandation["personne"], $recommandation["entreprise"], $recommandation["recommandation"], $id_user);
+        $new_recommandation = new Recommandation($recommandation["personne"], $recommandation["entreprise"], $recommandation["recommandation"], $id_user);
 
         $em->persist($new_recommandation);
         $em->flush();
 
+        $this->updateRecommandations($request);
+
         return $this->redirect($this->generateUrl("admin_recommandations"));
     }
 
+    private function updateRecommandations(Request $request)
+    {
+        $session = $request->getSession();
+        $recommandations = $this->forward('AppBundle:Folio:getRecommandations', array("idUser" => $session->get("id")));
+
+        $session->set("recommandations", $recommandations->getContent());
+    }
 }

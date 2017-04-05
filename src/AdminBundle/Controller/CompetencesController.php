@@ -12,7 +12,7 @@ class CompetencesController extends Controller
     {
         $session = $request->getSession();
         $competences = $session->get("competences");
-        $competences = unserialize($competences->getContent());
+        $competences = unserialize($competences);
 
         return $this->render("AdminBundle::competences.html.twig", array("competences" => $competences));
     }
@@ -53,6 +53,8 @@ class CompetencesController extends Controller
             $em->flush();
         }
 
+        $this->updateCompetences($request);
+
         return $this->redirect($this->generateUrl("admin_competences"));
     }
 
@@ -75,6 +77,16 @@ class CompetencesController extends Controller
         $em->persist($new_competence);
         $em->flush();
 
+        $this->updateCompetences($request);
+        
         return $this->redirect($this->generateUrl("admin_competences"));
+    }
+
+    private function updateCompetences(Request $request)
+    {
+        $session = $request->getSession();
+        $competences = $this->forward('AppBundle:Folio:getCompetences', array("idUser" => $session->get("id")));
+
+        $session->set("competences", $competences->getContent());
     }
 }

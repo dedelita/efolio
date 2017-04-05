@@ -7,7 +7,7 @@
         <h1><i class="fa fa-edit"></i> Modifier mes informations personnelles</h1>
 
         <div class="panel-content">
-            <form action="#" method="post">
+            <form action="{{ path("set_info") }}" method="post">
                 <div class="form-row">
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" id="nom" value="{{ user.get("nom") }}"/>
@@ -19,8 +19,8 @@
                 </div>
 
                 <div class="form-row">
-                    <label for="prenom">Email</label>
-                    <input type="text" name="prenom" id="prenom" value="{{ user.get("email") }}"/>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" value="{{ user.get("email") }}"/>
                 </div>
 
                 <div class="form-row">

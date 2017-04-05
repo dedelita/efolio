@@ -14,7 +14,7 @@ class ProjetsController extends Controller
     {
         $session = $request->getSession();
         $projets = $session->get("projets");
-        $projets = unserialize($projets->getContent());
+        $projets = unserialize($projets);
 
         return $this->render("AdminBundle::projets.html.twig", array("projets" => $projets));
     }
@@ -49,6 +49,8 @@ class ProjetsController extends Controller
             $em->flush();
         }
 
+        $this->updateProjets($request);
+
         return $this->redirect($this->generateUrl("admin_projets"));
     }
 
@@ -65,7 +67,16 @@ class ProjetsController extends Controller
         $em->persist($new_projet);
         $em->flush();
 
+        $this->updateProjets($request);
+
         return $this->redirect($this->generateUrl("admin_projets"));
     }
 
+    private function updateProjets(Request $request)
+    {
+        $session = $request->getSession();
+        $projets = $this->forward('AppBundle:Folio:getProjets', array("idUser" => $session->get("id")));
+
+        $session->set("projets", $projets->getContent());
+    }
 }

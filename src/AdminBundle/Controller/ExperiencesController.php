@@ -14,7 +14,7 @@ class ExperiencesController extends Controller
     {
         $session = $request->getSession();
         $experiences = $session->get("experiences");
-        $experiences = unserialize($experiences->getContent());
+        $experiences = unserialize($experiences);
 
         return $this->render("AdminBundle::experiences.html.twig", array("experiences" => $experiences));
     }
@@ -47,6 +47,8 @@ class ExperiencesController extends Controller
             $em->flush();
         }
 
+        $this->updateExperiences($request);
+
         return $this->redirect($this->generateUrl("admin_experiences"));
     }
 
@@ -63,7 +65,16 @@ class ExperiencesController extends Controller
         $em->persist($new_experience);
         $em->flush();
 
+        $this->updateExperiences($request);
+
         return $this->redirect($this->generateUrl("admin_experiences"));
     }
 
+    private function updateExperiences(Request $request)
+    {
+        $session = $request->getSession();
+        $experiences = $this->forward('AppBundle:Folio:getExperiences', array("idUser" => $session->get("id")));
+
+        $session->set("experiences", $experiences->getContent());
+    }
 }

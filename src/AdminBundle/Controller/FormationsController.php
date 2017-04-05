@@ -12,7 +12,7 @@ class FormationsController extends Controller
     {
         $session = $request->getSession();
         $formations = $session->get("formations");
-        $formations = unserialize($formations->getContent());
+        $formations = unserialize($formations);
 
         return $this->render("AdminBundle::formations.html.twig", array("formations" => $formations));
     }
@@ -48,6 +48,8 @@ class FormationsController extends Controller
             $em->flush();
         }
 
+        $this->updateFormations($request);
+
         return $this->redirect($this->generateUrl("admin_formations"));
     }
 
@@ -64,7 +66,16 @@ class FormationsController extends Controller
         $em->persist($new_formation);
         $em->flush();
 
+        $this->updateFormations($request);
+
         return $this->redirect($this->generateUrl("admin_formations"));
     }
 
+    private function updateFormations(Request $request)
+    {
+        $session = $request->getSession();
+        $formations = $this->forward('AppBundle:Folio:getFormations', array("idUser" => $session->get("id")));
+
+        $session->set("formations", $formations->getContent());
+    }
 }

@@ -103,9 +103,8 @@
             {% else %}
                 {% for recommandation in recommandations %}
                     <div class="recommandation">
-                        <p>{{ recommandation.getPersonne() }}</p>
-                        <p>{{ recommandation.getEntreprise() }}</p>
-                        <p>{{ recommandation.getRecommandation() }}</p>
+                        <h2>{{ recommandation.getPersonne() }} de {{ recommandation.getEntreprise() }}</h2>
+                        <p><i class="fa fa-quote-left"></i> {{ recommandation.getRecommandation() }} <i class="fa fa-quote-right"></i></p>
 
                         {% if loop.last == false %}
                             <hr>
@@ -124,7 +123,7 @@
             {% else %}
                 {% for publication in publications %}
                     <div class="publication">
-                        <p>{{ publication.getTitre() }}</p>
+                        <h2>{{ publication.getTitre() }}</h2>
                         <p>{{ publication.getPublication() }}</p>
 
                         {% if loop.last == false %}

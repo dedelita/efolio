@@ -41,22 +41,22 @@ class UserController extends Controller
                     $session->set("email", $user->getEmail());
 
                     $formations = $this->forward('AppBundle:Folio:getFormations', array("idUser" => $user->getId()));
-                    $session->set("formations", $formations);
+                    $session->set("formations", $formations->getContent());
 
                     $experiences = $this->forward('AppBundle:Folio:getExperiences', array("idUser" => $user->getId()));
-                    $session->set("experiences", $experiences);
+                    $session->set("experiences", $experiences->getContent());
 
                     $competences = $this->forward('AppBundle:Folio:getCompetences', array("idUser" => $user->getId()));
-                    $session->set("competences", $competences);
+                    $session->set("competences", $competences->getContent());
 
                     $projets = $this->forward('AppBundle:Folio:getProjets', array("idUser" => $user->getId()));
-                    $session->set("projets", $projets);
+                    $session->set("projets", $projets->getContent());
 
                     $recommandations = $this->forward('AppBundle:Folio:getRecommandations', array("idUser" => $user->getId()));
-                    $session->set("recommandations", $recommandations);
+                    $session->set("recommandations", $recommandations->getContent());
 
                     $publications = $this->forward('AppBundle:Folio:getPublications', array("idUser" => $user->getId()));
-                    $session->set("publications", $publications);
+                    $session->set("publications", $publications->getContent());
                     
 
                    return $this->redirect($this->generateUrl('admin_formations'));
@@ -75,5 +75,20 @@ class UserController extends Controller
         $session->invalidate();
 
         return $this->redirect($this->generateUrl('efolio'));
+    }
+
+    public function setInfoAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        $permis = $request->get("permis") == "true" ? true : false;
+
+        $session->set("nom", $request->get("nom"));
+        $session->set("prenom", $request->get("prenom"));
+        $session->set("dateNaissance", $request->get("dateNaissance"));
+        $session->set("permis", $permis);
+        $session->set("email", $request->get("email"));
+
+        return $this->render("AdminBundle::informationsPersonnelles.html.twig", array("user" => $session));
     }
 }
