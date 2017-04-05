@@ -93,9 +93,9 @@ class FolioController extends Controller
     public function getFormContact()
     {
         $form = $this->createFormBuilder()
-            ->add('email', EmailType::class, array('label' => "Votre adresse mail"))
-            ->add('objet', TextType::class, array('label' => "Votre objet"))
-            ->add('msg', TextareaType::class, array('attr' => array('rows' => 15, 'cols' => 75)))
+            ->add('email', EmailType::class, array('label' => "Votre adresse mail", 'required' => true))
+            ->add('objet', TextType::class, array('label' => "Votre objet", 'required' => true))
+            ->add('msg', TextareaType::class, array('attr' => array('rows' => 15, 'cols' => 75, 'required' => true)))
             ->add('Envoyer', SubmitType::class)
             ->getForm();
 
@@ -104,8 +104,9 @@ class FolioController extends Controller
 
     public function sendMailAction(Request $request)
     {
-        $session = $request->getSession();
-        $to = $session->get("email");
+        $user = $this->getUserInfo();
+
+        $to = $user->getEmail();
 
         $form = $request->get("form");
 
@@ -117,7 +118,7 @@ class FolioController extends Controller
 
         $this->get("mailer")->send($message);
 
-        return $this->getEfolioAction();
+        return  $this->redirect($this->generateUrl('efolio', ['_fragment' => 'contact']));
     }
 
     public function getUserInfo() {
