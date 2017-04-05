@@ -20,7 +20,7 @@ class FolioController extends Controller
         return new Response(serialize($formations));
     }
 
-    public function getFormations() {
+    private function getFormations() {
         return unserialize($this->getFormationsAction()->getContent());
     }
 
@@ -33,7 +33,7 @@ class FolioController extends Controller
         return new Response(serialize($experiences));
     }
 
-    public function getExperiences() {
+    private function getExperiences() {
         return unserialize($this->getExperiencesAction()->getContent());
     }
 
@@ -46,7 +46,7 @@ class FolioController extends Controller
         return new Response(serialize($competences));
     }
 
-    public function getCompetences() {
+    private function getCompetences() {
         return unserialize($this->getCompetencesAction()->getContent());
     }
 
@@ -59,7 +59,7 @@ class FolioController extends Controller
         return new Response(serialize($projets));
     }
 
-    public function getProjets() {
+    private function getProjets() {
         return unserialize($this->getProjetsAction()->getContent());
     }
 
@@ -72,7 +72,7 @@ class FolioController extends Controller
         return new Response(serialize($recommandations));
     }
 
-    public function getRecommandations() {
+    private function getRecommandations() {
         return unserialize($this->getRecommandationsAction()->getContent());
     }
 
@@ -85,7 +85,7 @@ class FolioController extends Controller
         return new Response(serialize($publications));
     }
 
-    public function getPublications() {
+    private function getPublications() {
         return unserialize($this->getPublicationsAction()->getContent());
     }
 

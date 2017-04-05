@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My e-portfolio{% endblock %}
+{% block title %}EPortfolio{% endblock %}
 
 {% block top_title %}
     <h1>EPortfolio de {{ user.getPrenom() }} {{ user.getNom() }}</h1>
+
     <p>{{ user.getDateNaissance() }} ({{ user.getAge() }})</p>
+
+    {% if user.getPermis() %}
+        <p>Permis B</p>
+    {% endif %}
+
     <div class="right small-text">
         <a href="{{ path("admin_connexion") }}"><i class="fa fa-sign-in"></i> Administration - Connexion</a>
     </div>
