@@ -10,9 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PublicationsController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $publications = $this->forward('AppBundle:Folio:getPublications');
+        $session = $request->getSession();
+        $publications = $session->get("publications");
         $publications = unserialize($publications->getContent());
 
         return $this->render("AdminBundle::publications.html.twig", array("publications" => $publications));

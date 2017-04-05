@@ -13,9 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class FolioController extends Controller
 {
     //Formations
-    public function getFormationsAction() {
+    public function getFormationsAction($idUser = 1) {
         $formationRepo = $this->getDoctrine()->getRepository('AppBundle:Formation');
-        $formations = $formationRepo->findByIdUser(1);
+        $formations = $formationRepo->findByIdUser($idUser);
 
         return new Response(serialize($formations));
     }
@@ -26,9 +26,9 @@ class FolioController extends Controller
 
 
     //Experiences
-    public function getExperiencesAction() {
+    public function getExperiencesAction($idUser = 1) {
         $experienceRepo = $this->getDoctrine()->getRepository('AppBundle:Experience');
-        $experiences = $experienceRepo->findByIdUser(1);
+        $experiences = $experienceRepo->findByIdUser($idUser);
 
         return new Response(serialize($experiences));
     }
@@ -39,9 +39,9 @@ class FolioController extends Controller
 
 
     //Competences
-    public function getCompetencesAction() {
+    public function getCompetencesAction($idUser = 1) {
         $competenceRepo = $this->getDoctrine()->getRepository('AppBundle:Competence');
-        $competences = $competenceRepo->findByIdUser(1);
+        $competences = $competenceRepo->findByIdUser($idUser);
 
         return new Response(serialize($competences));
     }
@@ -52,9 +52,9 @@ class FolioController extends Controller
 
 
     //Projets
-    public function getProjetsAction() {
+    public function getProjetsAction($idUser = 1) {
         $projetRepo = $this->getDoctrine()->getRepository('AppBundle:Projet');
-        $projets = $projetRepo->findByIdUser(1);
+        $projets = $projetRepo->findByIdUser($idUser);
 
         return new Response(serialize($projets));
     }
@@ -65,9 +65,9 @@ class FolioController extends Controller
 
 
     //Recommandation
-    public function getRecommandationsAction() {
+    public function getRecommandationsAction($idUser = 1) {
         $recommandationRepo = $this->getDoctrine()->getRepository('AppBundle:Recommandation');
-        $recommandations = $recommandationRepo->findByIdUser(1);
+        $recommandations = $recommandationRepo->findByIdUser($idUser);
 
         return new Response(serialize($recommandations));
     }
@@ -78,9 +78,9 @@ class FolioController extends Controller
 
 
     //Publications
-    public function getPublicationsAction() {
+    public function getPublicationsAction($idUser = 1) {
         $publicationRepo = $this->getDoctrine()->getRepository('AppBundle:Publication');
-        $publications = $publicationRepo->findByIdUser(1);
+        $publications = $publicationRepo->findByIdUser($idUser);
 
         return new Response(serialize($publications));
     }

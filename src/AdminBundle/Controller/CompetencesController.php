@@ -8,9 +8,10 @@ use AppBundle\Entity\Competence;
 
 class CompetencesController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $competences = $this->forward('AppBundle:Folio:getCompetences');
+        $session = $request->getSession();
+        $competences = $session->get("competences");
         $competences = unserialize($competences->getContent());
 
         return $this->render("AdminBundle::competences.html.twig", array("competences" => $competences));

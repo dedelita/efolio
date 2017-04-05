@@ -10,9 +10,10 @@ use AppBundle\Entity\Projet;
 
 class ProjetsController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $projets = $this->forward('AppBundle:Folio:getProjets');
+        $session = $request->getSession();
+        $projets = $session->get("projets");
         $projets = unserialize($projets->getContent());
 
         return $this->render("AdminBundle::projets.html.twig", array("projets" => $projets));

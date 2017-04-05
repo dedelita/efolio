@@ -40,6 +40,25 @@ class UserController extends Controller
                     $session->set("permis", $user->getPermis());
                     $session->set("email", $user->getEmail());
 
+                    $formations = $this->forward('AppBundle:Folio:getFormations', array("idUser" => $user->getId()));
+                    $session->set("formations", $formations);
+
+                    $experiences = $this->forward('AppBundle:Folio:getExperiences', array("idUser" => $user->getId()));
+                    $session->set("experiences", $experiences);
+
+                    $competences = $this->forward('AppBundle:Folio:getCompetences', array("idUser" => $user->getId()));
+                    $session->set("competences", $competences);
+
+                    $projets = $this->forward('AppBundle:Folio:getProjets', array("idUser" => $user->getId()));
+                    $session->set("projets", $projets);
+
+                    $recommandations = $this->forward('AppBundle:Folio:getRecommandations', array("idUser" => $user->getId()));
+                    $session->set("recommandations", $recommandations);
+
+                    $publications = $this->forward('AppBundle:Folio:getPublications', array("idUser" => $user->getId()));
+                    $session->set("publications", $publications);
+                    
+
                    return $this->redirect($this->generateUrl('admin_formations'));
                 } else
                     $erreur = "Mauvais mot de passe !";

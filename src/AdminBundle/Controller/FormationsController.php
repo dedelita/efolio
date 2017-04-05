@@ -8,9 +8,10 @@ use AppBundle\Entity\Formation;
 
 class FormationsController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $formations = $this->forward('AppBundle:Folio:getFormations');
+        $session = $request->getSession();
+        $formations = $session->get("formations");
         $formations = unserialize($formations->getContent());
 
         return $this->render("AdminBundle::formations.html.twig", array("formations" => $formations));

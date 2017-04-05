@@ -42,7 +42,7 @@ li {
 /* --------------------- FORM --------------------- */
 form {
     width: 75%;
-    margin: 15px auto;
+    margin: 25px auto;
 }
 
 .form-row {
@@ -57,7 +57,10 @@ form {
 }
 
 .form-row > label.label-radio {
-    width: 10%;
+    width: 70px;
+    font-weight:normal;
+    text-align: initial;
+    margin-left: 10px;
 }
 
 .form-row > input, .form-row > textarea {
@@ -128,7 +131,7 @@ button, input[type="submit"] {
 }
 
 .panel-content {
-    margin: 15px auto;
+    margin: 0 auto;
     text-align: center;
     padding: 15px;
 }

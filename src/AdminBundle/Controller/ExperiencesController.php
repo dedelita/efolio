@@ -10,9 +10,10 @@ use AppBundle\Entity\Experience;
 
 class ExperiencesController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $experiences = $this->forward('AppBundle:Folio:getExperiences');
+        $session = $request->getSession();
+        $experiences = $session->get("experiences");
         $experiences = unserialize($experiences->getContent());
 
         return $this->render("AdminBundle::experiences.html.twig", array("experiences" => $experiences));

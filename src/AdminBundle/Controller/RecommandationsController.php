@@ -10,9 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RecommandationsController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $recommandations = $this->forward('AppBundle:Folio:getRecommandations');
+        $session = $request->getSession();
+        $recommandations = $session->get("recommandations");
         $recommandations = unserialize($recommandations->getContent());
 
         return $this->render("AdminBundle::recommandations.html.twig", array("recommandations" => $recommandations));
